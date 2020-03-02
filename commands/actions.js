@@ -1,4 +1,4 @@
-const { RichEmbed } = require('discord.js');
+const { embedBuilder } = require('../helper');
 let local_client = null;
 
 module.exports = {
@@ -146,16 +146,5 @@ module.exports = {
     // }
     msg.channel.send(embedBuilder(``, msg.author, `RANDOM`, `Good Boy!`));
   }
-}
-
-function embedBuilder(description, author, color, title, image) {
-  let response = new RichEmbed()
-      .setTitle(title)
-      .setColor(color)
-      .setImage(image)
-      .setAuthor(author.tag, author.avatarURL)
-      .setDescription(description);
-
-  return response;
 }
 

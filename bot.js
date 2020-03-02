@@ -4,6 +4,7 @@ const client = new Client();
 const jumbo = require('./commands/jumbo');
 const help = require('./commands/help');
 const dadjoke = require('./commands/dadjoke');
+const avatar = require('./commands/avatar');
 const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy } = require('./commands/actions');
 
 
@@ -33,6 +34,9 @@ client.on('message', msg => {
           break;
         case 'dadjoke':
           dadjoke(msg, client);
+          break;
+        case 'avatar':
+          avatar(commandArray[2], msg, client);        
           break;
         case 'bellyrub':
           if(commandArray.length <= 2) {
@@ -181,10 +185,6 @@ client.on('message', msg => {
 
   }
 });
-
-
-
-
 
 
 if(current_env == 'dev') {
