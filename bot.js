@@ -176,7 +176,12 @@ client.on('message', msg => {
           msg.channel.send(`Help is coming soon!`);
           break;
         case 'fuck':
-          msg.channel.send(`Nice try... maybe later ;)`);
+          if(commandArray.length <= 2) {
+            msg.channel.send(`Sorry, you must include a target of your action!`);
+          }
+          else {
+            fuck(commandArray, msg, client);
+          }
           break;
         default:
           console.log("no match");
@@ -186,6 +191,10 @@ client.on('message', msg => {
   }
 });
 
+
+client.on('error', error => {
+  console.error('The websocket connection encountered an error:', error);
+});
 
 if(current_env == 'dev') {
   client.login(dev_token);

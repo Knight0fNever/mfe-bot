@@ -140,11 +140,11 @@ module.exports = {
   },
   fuck: (target, msg, client) => {
     local_client = client;
-    // let targets = "";
-    // for(let i = 2; i < target.length; i++) {
-    //   targets = targets + target[i] + " ";
-    // }
-    msg.channel.send(embedBuilder(``, msg.author, `RANDOM`, `Good Boy!`));
+    let targets = "";
+    for(let i = 2; i < target.length; i++) {
+      targets = targets + target[i] + " ";
+    }
+    msg.channel.send(embedBuilder(`${msg.author} bends ${targets} over and fucks them! Everyone look away.. or not`, msg.author, `RANDOM`, `Fuck!`));
   }
 }
 
