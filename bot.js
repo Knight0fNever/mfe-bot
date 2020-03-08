@@ -179,8 +179,11 @@ client.on('message', msg => {
           if(commandArray.length <= 2) {
             msg.channel.send(`Sorry, you must include a target of your action!`);
           }
-          else {
+          else if(msg.channel.id != '598847956996718628') {
             fuck(commandArray, msg, client);
+          }
+          else {
+            msg.channel.send(`This can't be done in the SFW-Chat!`);
           }
           break;
         case 'pant':
