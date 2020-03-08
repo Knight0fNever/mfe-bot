@@ -145,6 +145,10 @@ module.exports = {
       targets = targets + target[i] + " ";
     }
     msg.channel.send(embedBuilder(`${msg.author} bends ${targets} over and fucks them! Everyone look away.. or not`, msg.author, `RANDOM`, `Fuck!`));
+  },
+  pant: (msg, client) => {
+    local_client = client;
+    msg.channel.send(embedBuilder(`${msg.author} romoves their pant and then donates them to Skorn, the lover of pant`, msg.author, `RANDOM`, `Pant!`));
   }
 }
 
