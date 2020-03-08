@@ -148,7 +148,7 @@ module.exports = {
   },
   pant: (msg, client) => {
     local_client = client;
-    msg.channel.send(embedBuilder(`${msg.author} removes their pant and then donates them to Skorn, the lover of pant`, msg.author, `RANDOM`, `Pant!`));
+    msg.channel.send(embedBuilder(`${msg.author} removes their pant and then donates them to Skorn, the pant eater`, msg.author, `RANDOM`, `Pant!`));
   }
 }
 
