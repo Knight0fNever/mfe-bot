@@ -149,6 +149,14 @@ module.exports = {
   pant: (msg, client) => {
     local_client = client;
     msg.channel.send(embedBuilder(`${msg.author} removes their pant and then donates them to Skorn, the pant eater`, msg.author, `RANDOM`, `Pant!`));
+  },
+  eatPant: (target, msg, client) => {
+    local_client = client;
+    let targets = "";
+    for(let i = 2; i < target.length; i++) {
+      targets = targets + target[i] + " ";
+    }
+    msg.channel.send(embedBuilder(`${msg.author} sneaks up behind ${targets} and steals their pant, quickly eating them in 2 big chomps.`, msg.author, `RANDOM`, `Eat Pant!`));
   }
 }
 

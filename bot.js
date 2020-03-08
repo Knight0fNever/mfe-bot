@@ -5,7 +5,7 @@ const jumbo = require('./commands/jumbo');
 const help = require('./commands/help');
 const dadjoke = require('./commands/dadjoke');
 const avatar = require('./commands/avatar');
-const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy, fuck, pant } = require('./commands/actions');
+const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy, fuck, pant, eatPant } = require('./commands/actions');
 
 
 let prefix = "mfe!";
@@ -185,6 +185,18 @@ client.on('message', msg => {
           break;
         case 'pant':
           pant(msg, client);
+          break;
+        case 'eatpant':
+          let authorizedUser = '250006896369598468'
+          if(commandArray.length <= 2 && msg.author.id == authorizedUser) {
+            msg.channel.send(`Sorry, you must include a target of your action!`);
+          }
+          else if(msg.author.id == authorizedUser) {
+            eatPant(commandArray, msg, client);
+          }
+          else {
+            msg.channel.send(`Sorry, you can't eat pant.`);
+          }
           break;
         default:
           console.log("no match");
