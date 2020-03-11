@@ -169,7 +169,7 @@ module.exports = (commandArray, msg, client) => {
       }
       break;
     case 'pant':
-      pant(msg, client);
+      pant(commandArray[2], msg, client);
       break;
     case 'eatpant':
       let authorizedUser = '250006896369598468'
