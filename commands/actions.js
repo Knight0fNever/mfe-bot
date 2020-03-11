@@ -171,7 +171,7 @@ module.exports = {
       msg.channel.send(embed);
     }
     else {
-      let embed = embedBuilder(`${msg.author} removes their pant and then donates them to <@${user.id}>!`, msg.author, `RANDOM`, `Pant!`)
+      let embed = embedBuilder(`${msg.author} removes their pant and then gives them to <@${user.id}>!`, msg.author, `RANDOM`, `Pant!`)
       msg.channel.send(embed);
   }
   },
