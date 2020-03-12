@@ -159,12 +159,15 @@ module.exports = {
       targets = targets + target[i] + " ";
     }
     targets = targets.trim();
-    msg.channel.send(embedBuilder(`${msg.author} bends ${targets} over and fucks them! Everyone look away.. or not`, msg.author, `RANDOM`, `Fuck!`));
+    if(msg.author.id == msg.mentions.users.first().id) {
+      msg.channel.send("<:judging:633193950299291658>");
+    }
+    else {
+      msg.channel.send(embedBuilder(`${msg.author} bends ${targets} over and fucks them! Everyone look away.. or not`, msg.author, `RANDOM`, `Fuck!`));
+    }
   },
   pant: (target, msg, client) => {
     local_client = client;
-    // msg.channel.send(embedBuilder(`${msg.author} removes their pant and then donates them to Skorn, the pant eater`, msg.author, `RANDOM`, `Pant!`));
-
     const user = msg.mentions.users.first();
     if(user == undefined) {
       let embed = embedBuilder(`${msg.author} removes their pant and then donates them to Skorn, the pant eater!`, msg.author, `RANDOM`, `Pant!`)
