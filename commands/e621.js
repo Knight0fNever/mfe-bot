@@ -24,14 +24,18 @@ module.exports = (search, msg, parent_client) => {
     //  console.log(posts);
     let post = posts[Math.floor(Math.random() * posts.length)];
     // console.log(`URL: ${post.file.url}`);
-    if(post.file.url.substring(post.file.url.length - 4) != `webm`) {
+    if(posts.length == 0) {
+      msg.channel.send("No results!");
+    }
+    else if(post.file.url.substring(post.file.url.length - 4) != `webm`) {
       embed = embedBuilder(`e621`, msg.author, `RANDOM`, ``, post.file.url, [{"name": "Link: ", "value": `https://e621.net/posts/${post.id}`}]);
+      msg.channel.send(embed);
     }
     else {
       embed = embedBuilder(`e621`, msg.author, `RANDOM`, ``, post.file.url, [{"name": "Link: ", "value": `https://e621.net/posts/${post.id}`}, {"name": "WEBM", "value": "This post contains a webm. If you cannot see it, please click on the link to be taken to the e621 webpage."}]);
+      msg.channel.send(embed);
     }
-    
-    msg.channel.send(embed);
+  
     });
   }
   else {
