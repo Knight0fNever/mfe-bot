@@ -5,7 +5,8 @@ let client = null;
 
 module.exports = (search, msg, parent_client) => {
   client = parent_client;
-  if(msg.channel.id == "601680856817467393" || msg.author.id == "615687360138575893") {
+  let channel_whitelist = ['601680856817467393', '638747904969932840', '678743526254575617', '437808447745032205', '640605618553749534'];
+  if(channel_whitelist.includes(msg.channel.id)) {
     let search_string = search.toString().replace(/,/g, ' ').concat(' -female -cub');
     // console.log(search_string.replace(/ /g, '+'));
     let url = `https://e621.net/posts.json?tags=${search_string.replace(/ /g, '+')}&limit=150`;
