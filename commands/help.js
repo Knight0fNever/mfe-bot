@@ -35,7 +35,7 @@ module.exports = (msg, command) => {
   }
   else if (command == 'actions') {
     let response = new MessageEmbed()
-      .setTitle("MFE-Bot Help Page")
+      .setTitle("MFE-Bot Actions")
       .setColor("RANDOM")
       .setAuthor(msg.author.tag, msg.author.avatarURL())
       .setDescription("bellyrub\n boop\n cuddle\n flop\n hug\n kiss\n lick\n nap\n nuzzle\n pat\n poke\n pounce\n slap\n sniff\n spray\n wag\n whosagoodboy\n fuck\n pant\n eatPant")
