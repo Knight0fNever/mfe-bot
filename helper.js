@@ -1,13 +1,19 @@
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
-  embedBuilder: (description, author, color, title, image) => {
-    let response = new RichEmbed()
+  
+  embedBuilder: (description, author, color, title, image, fields) => {
+    let response = new MessageEmbed()
         .setTitle(title)
         .setColor(color)
-        .setImage(image)
-        .setAuthor(author.tag, author.avatarURL)
+        .setAuthor(author.tag, author.avatarURL())
         .setDescription(description);
+      if(image != undefined) {
+        response.setImage(image);
+      }
+      if(fields != undefined) {
+        response.addFields(fields);
+      }
   
     return response;
   }

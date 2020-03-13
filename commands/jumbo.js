@@ -1,4 +1,4 @@
-const { Attachment } = require('discord.js');
+const { MessageAttachment } = require('discord.js');
 let client = null;
 
 module.exports = (commandText, msg, main_client) => {
@@ -12,7 +12,7 @@ module.exports = (commandText, msg, main_client) => {
         msg.channel.send("Sorry, I ran into an error and could not continue.");
       }
       else {
-        let response = new Attachment(getEmoji(emotes[0]).url);
+        let response = new MessageAttachment(getEmoji(emotes[0]).url);
         // console.log(getEmoji(emotes[0]).url);
         msg.channel.send(response);
       }
@@ -25,7 +25,7 @@ module.exports = (commandText, msg, main_client) => {
 
 function getEmoji(id) {
   try{
-    return client.emojis.get(id);
+    return client.emojis.resolve(id);
   }
   catch(e) {
     console.log("Error: " + e);
@@ -90,7 +90,7 @@ function parseEmojiId(emoji) {
 
 
 function verifyEmojiID(id) {
-  let test = client.emojis.get(id);
+  let test = client.emojis.resolve(id);
   // console.log(test);
   if(test === undefined) {
     return false;

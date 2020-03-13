@@ -2,6 +2,7 @@ const jumbo = require('./commands/jumbo');
 const help = require('./commands/help');
 const dadjoke = require('./commands/dadjoke');
 const avatar = require('./commands/avatar');
+const e621 = require('./commands/e621');
 const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy, fuck, pant, eatPant } = require('./commands/actions');
 
 module.exports = (commandArray, msg, client) => {
@@ -182,6 +183,11 @@ module.exports = (commandArray, msg, client) => {
       else {
         msg.channel.send(`Sorry, you can't eat pant.`);
       }
+      break;
+    case 'e621':
+      let search_array = commandArray.splice(2,commandArray.length - 2);
+      console.log(search_array);
+      e621(search_array, msg, client);
       break;
     default:
       console.log("no match");
