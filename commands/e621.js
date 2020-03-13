@@ -1,10 +1,11 @@
 const fetch = require('node-fetch');
 const { embedBuilder } = require('../helper');
+require('dotenv').config()
 let client = null;
 
 module.exports = (search, msg, parent_client) => {
   client = parent_client;
-  if(msg.channel.id == "601680856817467393") {
+  if(msg.channel.id == "601680856817467393" || msg.author.id == "615687360138575893") {
     let search_string = search.toString().replace(/,/g, ' ').concat(' -female -cub');
     // console.log(search_string.replace(/ /g, '+'));
     let url = `https://e621.net/posts.json?tags=${search_string.replace(/ /g, '+')}&limit=150`;
@@ -13,7 +14,7 @@ module.exports = (search, msg, parent_client) => {
       headers: {
         'Accept': 'application/json',
         'User-Agent': 'mfe-bot/1.0 (by furryknight3 on e621)',
-        "Authorization": "Basic ZnVycnlrbmlnaHQzOmEzNzQ5NmYwZDVmM2E1YTkxMmYyNTA4ZGNmZDNlZmIy"
+        "Authorization": `Basic ${process.env.E621_AUTH}` 
       },
       method: 'get'
     })
