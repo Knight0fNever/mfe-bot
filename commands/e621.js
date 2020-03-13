@@ -4,7 +4,7 @@ let client = null;
 
 module.exports = (search, msg, parent_client) => {
   client = parent_client;
-  if(msg.channel.id == "437808447745032205") {
+  if(msg.channel.id == "601680856817467393") {
     let search_string = search.toString().replace(/,/g, ' ').concat(' -female -cub');
     // console.log(search_string.replace(/ /g, '+'));
     let url = `https://e621.net/posts.json?tags=${search_string.replace(/ /g, '+')}&limit=150`;
