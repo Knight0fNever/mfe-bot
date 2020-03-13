@@ -24,16 +24,23 @@ module.exports = (search, msg, parent_client) => {
     let embed = null;
     //  console.log(posts);
     let post = posts[Math.floor(Math.random() * posts.length)];
+    let result_count = 0;
+    if(posts.length == 150) {
+      result_count = "150+";
+    }
+    else {
+      result_count = posts.length;
+    }
     // console.log(`URL: ${post.file.url}`);
     if(posts.length == 0) {
       msg.channel.send("No results!");
     }
     else if(post.file.url.substring(post.file.url.length - 4) != `webm`) {
-      embed = embedBuilder(`e621`, msg.author, `RANDOM`, ``, post.file.url, [{"name": "Link: ", "value": `https://e621.net/posts/${post.id}`}]);
+      embed = embedBuilder(`e621`, msg.author, `RANDOM`, ``, post.file.url, [{"name": "Number of results:", "value": result_count}, {"name": "Link: ", "value": `https://e621.net/posts/${post.id}`}]);
       msg.channel.send(embed);
     }
     else {
-      embed = embedBuilder(`e621`, msg.author, `RANDOM`, ``, post.file.url, [{"name": "Link: ", "value": `https://e621.net/posts/${post.id}`}, {"name": "WEBM", "value": "This post contains a webm. If you cannot see it, please click on the link to be taken to the e621 webpage."}]);
+      embed = embedBuilder(`e621`, msg.author, `RANDOM`, ``, post.file.url, [{"name": "Number of results:", "value": result_count}, {"name": "Link: ", "value": `https://e621.net/posts/${post.id}`}, {"name": "WEBM", "value": "This post contains a webm. If you cannot see it, please click on the link to be taken to the e621 webpage."}]);
       msg.channel.send(embed);
     }
   

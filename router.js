@@ -156,7 +156,7 @@ module.exports = (commandArray, msg, client) => {
       msg.channel.send(`That feature isn't available yet!`);
       break;
     case 'help':
-      msg.channel.send(`Help is coming soon!`);
+      help(msg, commandArray[2]);
       break;
     case 'fuck':
       if(commandArray.length <= 2) {
