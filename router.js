@@ -3,7 +3,7 @@ const help = require('./commands/help');
 const dadjoke = require('./commands/dadjoke');
 const avatar = require('./commands/avatar');
 const e621 = require('./commands/e621');
-const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy, fuck, pant, eatPant } = require('./commands/actions');
+const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy, fuck, pant, eatPant, suck } = require('./commands/actions');
 
 module.exports = (commandArray, msg, client) => {
   switch(commandArray[1].toLowerCase()) {
@@ -188,6 +188,17 @@ module.exports = (commandArray, msg, client) => {
       let search_array = commandArray.splice(2,commandArray.length - 2);
       console.log(search_array);
       e621(search_array, msg, client);
+      break;
+    case 'suck':
+      if(commandArray.length <= 2) {
+        msg.channel.send(`Sorry, you must include a target of your action!`);
+      }
+      else if(msg.channel.id != '598847956996718628') {
+        suck(commandArray, msg, client);
+      }
+      else {
+        msg.channel.send(`This can't be done in the SFW-Chat!`);
+      }
       break;
     default:
       console.log("no match");

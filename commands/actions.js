@@ -168,6 +168,22 @@ module.exports = {
       }
     } 
   },
+  suck: (target, msg, client) => {
+    local_client = client;
+    let targets = "";
+    for(let i = 2; i < target.length; i++) {
+      targets = targets + target[i] + " ";
+    }
+    targets = targets.trim();
+    if(msg.mentions.users.first() != undefined) {
+      if(msg.author.id == msg.mentions.users.first().id) {
+        msg.channel.send("<:judging:633193950299291658>");
+      }
+      else {
+        msg.channel.send(embedBuilder(`${msg.author} sucks ${targets} hungrily, slightly gagging on their thick cock.`, msg.author, `RANDOM`, `Suck!`));
+      }
+    } 
+  },
   pant: (target, msg, client) => {
     local_client = client;
     const user = msg.mentions.users.first();
