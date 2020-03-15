@@ -188,7 +188,7 @@ module.exports = {
     local_client = client;
     const user = msg.mentions.users.first();
     if(user == undefined) {
-      let embed = embedBuilder(`${msg.author} removes their pant and then donates them to Skorn, the pant eater!`, msg.author, `RANDOM`, `Pant!`)
+      let embed = embedBuilder(`${msg.author} removes their pant and then donates them to <@!250006896369598468>, the pant eater!`, msg.author, `RANDOM`, `Pant!`)
       msg.channel.send(embed);
     }
     else {
