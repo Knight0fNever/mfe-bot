@@ -3,21 +3,29 @@ const help = require('./commands/help');
 const dadjoke = require('./commands/dadjoke');
 const avatar = require('./commands/avatar');
 const e621 = require('./commands/e621');
+let util = require('util');
 const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy, fuck, pant, eatPant, suck } = require('./commands/actions');
 
 
 const usedCommandRecently = new Set();
 const cooldownTime = 300000;
+const startTime = Date.now();
+let coolDowns = {
+
+}
 
 function cooldown(cooldownObj) {
   usedCommandRecently.add(cooldownObj);
-  setTimeout(() => {
+  coolDowns[cooldownObj] = setTimeout(() => {
     usedCommandRecently.delete(cooldownObj);
   }, cooldownTime)
+  // console.log(util.inspect(coolDowns));
+  // console.log(`Start time: ${startTime}`);
+  // console.log(Math.ceil(startTime + coolDowns[cooldownObj]._idleStart + coolDowns[cooldownObj]._idleTimeout - Date.now()));
 }
 
-function cooldownNotice(msg) {
-  msg.reply(`you can only use this command once every ${cooldownTime / 60000} minutes`);
+function cooldownNotice(msg, timeLeft) {
+  msg.reply(`you have ${Math.ceil(timeLeft / 60000)} minutes left before you can use this command again.`);
 }
 
 let test = 0;
@@ -26,6 +34,10 @@ module.exports = (commandArray, msg, client) => {
   let cooldownObj = {
     'command': commandArray[1].toLowerCase(),
     'userID': msg.author.id
+  }
+  let timeLeft = null;
+  if(coolDowns[JSON.stringify(cooldownObj)] != undefined) {
+    timeLeft = Math.ceil(startTime + coolDowns[JSON.stringify(cooldownObj)]._idleStart + coolDowns[JSON.stringify(cooldownObj)]._idleTimeout - Date.now());
   }
   switch (commandArray[1].toLowerCase()) {
     case 'jumbo':
@@ -42,7 +54,7 @@ module.exports = (commandArray, msg, client) => {
         cooldown(JSON.stringify(cooldownObj));
       }
       else {
-        cooldownNotice(msg);
+        cooldownNotice(msg, timeLeft);
       }
       break;
     case 'avatar':
@@ -57,7 +69,7 @@ module.exports = (commandArray, msg, client) => {
         cooldown(JSON.stringify(cooldownObj));
       }
       else {
-        cooldownNotice(msg);
+        cooldownNotice(msg, timeLeft);
       }
       break;
     case 'boop':
@@ -69,7 +81,7 @@ module.exports = (commandArray, msg, client) => {
         cooldown(JSON.stringify(cooldownObj));
       }
       else {
-        cooldownNotice(msg);
+        cooldownNotice(msg, timeLeft);
       }
       break;
     case 'cuddle':
@@ -81,7 +93,7 @@ module.exports = (commandArray, msg, client) => {
         cooldown(JSON.stringify(cooldownObj));
       }
       else {
-        cooldownNotice(msg);
+        cooldownNotice(msg, timeLeft);
       }
       break;
     case 'flop':
@@ -93,7 +105,7 @@ module.exports = (commandArray, msg, client) => {
         cooldown(JSON.stringify(cooldownObj));
       }
       else {
-        cooldownNotice(msg);
+        cooldownNotice(msg, timeLeft);
       }
       break;
     case 'hug':
@@ -105,7 +117,7 @@ module.exports = (commandArray, msg, client) => {
         cooldown(JSON.stringify(cooldownObj));
       }
       else {
-        cooldownNotice(msg);
+        cooldownNotice(msg, timeLeft);
       }
       break;
     case 'kiss':
@@ -117,7 +129,7 @@ module.exports = (commandArray, msg, client) => {
         cooldown(JSON.stringify(cooldownObj));
       }
       else {
-        cooldownNotice(msg);
+        cooldownNotice(msg, timeLeft);
       }
       break;
     case 'lick':
@@ -129,7 +141,7 @@ module.exports = (commandArray, msg, client) => {
         cooldown(JSON.stringify(cooldownObj));
       }
       else {
-        cooldownNotice(msg);
+        cooldownNotice(msg, timeLeft);
       }
       break;
     case 'nap':
@@ -141,7 +153,7 @@ module.exports = (commandArray, msg, client) => {
         cooldown(JSON.stringify(cooldownObj));
       }
       else {
-        cooldownNotice(msg);
+        cooldownNotice(msg, timeLeft);
       }
       break;
     case 'nuzzle':
@@ -153,7 +165,7 @@ module.exports = (commandArray, msg, client) => {
         cooldown(JSON.stringify(cooldownObj));
       }
       else {
-        cooldownNotice(msg);
+        cooldownNotice(msg, timeLeft);
       }
       break;
     case 'pat':
@@ -165,7 +177,7 @@ module.exports = (commandArray, msg, client) => {
         cooldown(JSON.stringify(cooldownObj));
       }
       else {
-        cooldownNotice(msg);
+        cooldownNotice(msg, timeLeft);
       }
       break;
     case 'pounce':
@@ -177,7 +189,7 @@ module.exports = (commandArray, msg, client) => {
         cooldown(JSON.stringify(cooldownObj));
       }
       else {
-        cooldownNotice(msg);
+        cooldownNotice(msg, timeLeft);
       }
       break;
     case 'poke':
@@ -189,7 +201,7 @@ module.exports = (commandArray, msg, client) => {
         cooldown(JSON.stringify(cooldownObj));
       }
       else {
-        cooldownNotice(msg);
+        cooldownNotice(msg, timeLeft);
       }
       break;
     case 'slap':
@@ -201,7 +213,7 @@ module.exports = (commandArray, msg, client) => {
         cooldown(JSON.stringify(cooldownObj));
       }
       else {
-        cooldownNotice(msg);
+        cooldownNotice(msg, timeLeft);
       }
       break;
     case 'sniff':
@@ -213,7 +225,7 @@ module.exports = (commandArray, msg, client) => {
         cooldown(JSON.stringify(cooldownObj));
       }
       else {
-        cooldownNotice(msg);
+        cooldownNotice(msg, timeLeft);
       }
       break;
     case 'spray':
@@ -225,7 +237,7 @@ module.exports = (commandArray, msg, client) => {
         cooldown(JSON.stringify(cooldownObj));
       }
       else {
-        cooldownNotice(msg);
+        cooldownNotice(msg, timeLeft);
       }
       break;
     case 'wag':
@@ -240,7 +252,7 @@ module.exports = (commandArray, msg, client) => {
         cooldown(JSON.stringify(cooldownObj));
       }
       else {
-        cooldownNotice(msg);
+        cooldownNotice(msg, timeLeft);
       }
       break;
     case 'marry':
@@ -259,7 +271,7 @@ module.exports = (commandArray, msg, client) => {
           cooldown(JSON.stringify(cooldownObj));
         }
         else {
-          cooldownNotice(msg);
+          cooldownNotice(msg, timeLeft);
         }
       }
       else {
@@ -272,7 +284,7 @@ module.exports = (commandArray, msg, client) => {
         cooldown(JSON.stringify(cooldownObj));
       }
       else {
-        cooldownNotice(msg);
+        cooldownNotice(msg, timeLeft);
       }
       break;
     case 'eatpant':
@@ -302,7 +314,7 @@ module.exports = (commandArray, msg, client) => {
           cooldown(JSON.stringify(cooldownObj));
         }
         else {
-          cooldownNotice(msg);
+          cooldownNotice(msg, timeLeft);
         }
       }
       else {
