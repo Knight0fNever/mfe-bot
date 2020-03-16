@@ -4,7 +4,6 @@ const dadjoke = require('./commands/dadjoke');
 const avatar = require('./commands/avatar');
 const e621 = require('./commands/e621');
 // const { seeCooldowns } = require('./commands/admin');
-let moment = require('moment');
 const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy, fuck, pant, eatPant, suck } = require('./commands/actions');
 
 
