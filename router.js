@@ -3,7 +3,8 @@ const help = require('./commands/help');
 const dadjoke = require('./commands/dadjoke');
 const avatar = require('./commands/avatar');
 const e621 = require('./commands/e621');
-let util = require('util');
+// const { seeCooldowns } = require('./commands/admin');
+let moment = require('moment');
 const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy, fuck, pant, eatPant, suck } = require('./commands/actions');
 
 
@@ -19,22 +20,18 @@ function cooldown(cooldownObj) {
   coolDowns[cooldownObj] = setTimeout(() => {
     usedCommandRecently.delete(cooldownObj);
   }, cooldownTime)
-  // console.log(util.inspect(coolDowns));
-  // console.log(`Start time: ${startTime}`);
-  // console.log(Math.ceil(startTime + coolDowns[cooldownObj]._idleStart + coolDowns[cooldownObj]._idleTimeout - Date.now()));
 }
 
 function cooldownNotice(msg, timeLeft) {
-  msg.reply(`you have ${Math.ceil(timeLeft / 60000)} minutes left before you can use this command again.`);
+  let minutes = Math.floor(timeLeft / 60000);
+  let seconds = Math.floor(((timeLeft / 60000) - minutes) * 60);
+  msg.reply(`you have ${minutes} minutes and ${seconds} seconds left before you can use this command again.`);
 }
 
 let test = 0;
 
 module.exports = (commandArray, msg, client) => {
-  let cooldownObj = {
-    'command': commandArray[1].toLowerCase(),
-    'userID': msg.author.id
-  }
+  let cooldownObj = `${commandArray[1].toLowerCase()}-${msg.author.id}`;
   let timeLeft = null;
   if(coolDowns[JSON.stringify(cooldownObj)] != undefined) {
     timeLeft = Math.ceil(startTime + coolDowns[JSON.stringify(cooldownObj)]._idleStart + coolDowns[JSON.stringify(cooldownObj)]._idleTimeout - Date.now());
@@ -321,6 +318,11 @@ module.exports = (commandArray, msg, client) => {
         msg.channel.send(`This can't be done in the SFW-Chat!`);
       }
       break;
+    // case 'cooldowns':
+    //   if(msg.author.id == '615687360138575893') {
+    //     seeCooldowns(msg, client, coolDowns, cooldownTime, startTime);
+    //   }
+    //   break;
     default:
       console.log("no match");
   }
