@@ -1,24 +1,32 @@
-const jumbo = require('./commands/jumbo');
+const startTime = Date.now();
+
+// const jumbo = require('./commands/jumbo');
+const ship = require('./commands/ship');
 const help = require('./commands/help');
 const dadjoke = require('./commands/dadjoke');
 const avatar = require('./commands/avatar');
 const e621 = require('./commands/e621');
-// const { seeCooldowns } = require('./commands/admin');
+const { seeCooldowns } = require('./commands/admin');
 const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy, fuck, pant, eatPant, suck } = require('./commands/actions');
 
+const staffRoldID = '599972688932372482';
 
 const usedCommandRecently = new Set();
 const cooldownTime = 300000;
-const startTime = Date.now();
 let coolDowns = {
 
-}
+};
 
-function cooldown(cooldownObj) {
+function cooldown(cooldownObj, id, action) {
   usedCommandRecently.add(cooldownObj);
-  coolDowns[cooldownObj] = setTimeout(() => {
-    usedCommandRecently.delete(cooldownObj);
-  }, cooldownTime)
+  coolDowns[cooldownObj] = {
+    'userID': id,
+    'action': action,
+    'timer': setTimeout(() => {
+      usedCommandRecently.delete(cooldownObj);
+      delete coolDowns[cooldownObj];
+    }, cooldownTime)
+  }
 }
 
 function cooldownNotice(msg, timeLeft) {
@@ -27,27 +35,25 @@ function cooldownNotice(msg, timeLeft) {
   msg.reply(`you have ${minutes} minutes and ${seconds} seconds left before you can use this command again.`);
 }
 
-let test = 0;
-
 module.exports = (commandArray, msg, client) => {
   let cooldownObj = `${commandArray[1].toLowerCase()}-${msg.author.id}`;
   let timeLeft = null;
   if(coolDowns[JSON.stringify(cooldownObj)] != undefined) {
-    timeLeft = Math.ceil(startTime + coolDowns[JSON.stringify(cooldownObj)]._idleStart + coolDowns[JSON.stringify(cooldownObj)]._idleTimeout - Date.now());
+    timeLeft = Math.ceil(startTime + coolDowns[JSON.stringify(cooldownObj)].timer._idleStart + coolDowns[JSON.stringify(cooldownObj)].timer._idleTimeout - Date.now());
   }
   switch (commandArray[1].toLowerCase()) {
-    case 'jumbo':
-      if (commandArray.length <= 2) {
-        msg.channel.send(`Sorry, you most give me an emote to jumbo!`);
-      }
-      else {
-        jumbo(commandArray[2], msg, client);
-      }
-      break;
+    // case 'jumbo':
+    //   if (commandArray.length <= 2) {
+    //     msg.channel.send(`Sorry, you most give me an emote to jumbo!`);
+    //   }
+    //   else {
+    //     jumbo(commandArray[2], msg, client);
+    //   }
+    //   break;
     case 'dadjoke':
       if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
         dadjoke(msg, client);
-        cooldown(JSON.stringify(cooldownObj));
+        cooldown(JSON.stringify(cooldownObj), msg.author.id, 'dadjoke');
       }
       else {
         cooldownNotice(msg, timeLeft);
@@ -62,7 +68,7 @@ module.exports = (commandArray, msg, client) => {
       }
       else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
         bellyrub(commandArray, msg, client);
-        cooldown(JSON.stringify(cooldownObj));
+        cooldown(JSON.stringify(cooldownObj), msg.author.id, 'bellyrub');
       }
       else {
         cooldownNotice(msg, timeLeft);
@@ -74,7 +80,7 @@ module.exports = (commandArray, msg, client) => {
       }
       else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
         boop(commandArray, msg, client);
-        cooldown(JSON.stringify(cooldownObj));
+        cooldown(JSON.stringify(cooldownObj), msg.author.id, 'boop');
       }
       else {
         cooldownNotice(msg, timeLeft);
@@ -86,7 +92,7 @@ module.exports = (commandArray, msg, client) => {
       }
       else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
         cuddle(commandArray, msg, client);
-        cooldown(JSON.stringify(cooldownObj));
+        cooldown(JSON.stringify(cooldownObj), msg.author.id, 'cuddle');
       }
       else {
         cooldownNotice(msg, timeLeft);
@@ -98,7 +104,7 @@ module.exports = (commandArray, msg, client) => {
       }
       else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
         flop(commandArray, msg, client);
-        cooldown(JSON.stringify(cooldownObj));
+        cooldown(JSON.stringify(cooldownObj), msg.author.id, 'flop');
       }
       else {
         cooldownNotice(msg, timeLeft);
@@ -110,7 +116,7 @@ module.exports = (commandArray, msg, client) => {
       }
       else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))){
         hug(commandArray, msg, client);
-        cooldown(JSON.stringify(cooldownObj));
+        cooldown(JSON.stringify(cooldownObj), msg.author.id, 'hug');
       }
       else {
         cooldownNotice(msg, timeLeft);
@@ -122,7 +128,7 @@ module.exports = (commandArray, msg, client) => {
       }
       else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))){
         kiss(commandArray, msg, client);
-        cooldown(JSON.stringify(cooldownObj));
+        cooldown(JSON.stringify(cooldownObj), msg.author.id, 'kiss');
       }
       else {
         cooldownNotice(msg, timeLeft);
@@ -134,7 +140,7 @@ module.exports = (commandArray, msg, client) => {
       }
       else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))){
         lick(commandArray, msg, client);
-        cooldown(JSON.stringify(cooldownObj));
+        cooldown(JSON.stringify(cooldownObj), msg.author.id, 'lick');
       }
       else {
         cooldownNotice(msg, timeLeft);
@@ -146,7 +152,7 @@ module.exports = (commandArray, msg, client) => {
       }
       else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))){
         nap(commandArray, msg, client);
-        cooldown(JSON.stringify(cooldownObj));
+        cooldown(JSON.stringify(cooldownObj), msg.author.id, 'nap');
       }
       else {
         cooldownNotice(msg, timeLeft);
@@ -158,7 +164,7 @@ module.exports = (commandArray, msg, client) => {
       }
       else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))){
         nuzzle(commandArray, msg, client);
-        cooldown(JSON.stringify(cooldownObj));
+        cooldown(JSON.stringify(cooldownObj), msg.author.id, 'nuzzle');
       }
       else {
         cooldownNotice(msg, timeLeft);
@@ -170,7 +176,7 @@ module.exports = (commandArray, msg, client) => {
       }
       else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))){
         pat(commandArray, msg, client);
-        cooldown(JSON.stringify(cooldownObj));
+        cooldown(JSON.stringify(cooldownObj), msg.author.id, 'pat');
       }
       else {
         cooldownNotice(msg, timeLeft);
@@ -182,7 +188,7 @@ module.exports = (commandArray, msg, client) => {
       }
       else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))){
         pounce(commandArray, msg, client);
-        cooldown(JSON.stringify(cooldownObj));
+        cooldown(JSON.stringify(cooldownObj), msg.author.id, 'pounce');
       }
       else {
         cooldownNotice(msg, timeLeft);
@@ -194,7 +200,7 @@ module.exports = (commandArray, msg, client) => {
       }
       else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))){
         poke(commandArray, msg, client);
-        cooldown(JSON.stringify(cooldownObj));
+        cooldown(JSON.stringify(cooldownObj), msg.author.id, 'poke');
       }
       else {
         cooldownNotice(msg, timeLeft);
@@ -206,7 +212,7 @@ module.exports = (commandArray, msg, client) => {
       }
       else if(!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
         slap(commandArray, msg, client);
-        cooldown(JSON.stringify(cooldownObj));
+        cooldown(JSON.stringify(cooldownObj), msg.author.id, 'slap');
       }
       else {
         cooldownNotice(msg, timeLeft);
@@ -218,7 +224,7 @@ module.exports = (commandArray, msg, client) => {
       }
       else if(!usedCommandRecently.has(JSON.stringify(cooldownObj))){
         sniff(commandArray, msg, client);
-        cooldown(JSON.stringify(cooldownObj));
+        cooldown(JSON.stringify(cooldownObj), msg.author.id, 'sniff');
       }
       else {
         cooldownNotice(msg, timeLeft);
@@ -230,7 +236,7 @@ module.exports = (commandArray, msg, client) => {
       }
       else if(!usedCommandRecently.has(JSON.stringify(cooldownObj))){
         spray(commandArray, msg, client);
-        cooldown(JSON.stringify(cooldownObj));
+        cooldown(JSON.stringify(cooldownObj), msg.author.id, 'spray');
       }
       else {
         cooldownNotice(msg, timeLeft);
@@ -245,7 +251,7 @@ module.exports = (commandArray, msg, client) => {
       }
       else if(!usedCommandRecently.has(JSON.stringify(cooldownObj))){
         whosagoodboy(commandArray, msg, client);
-        cooldown(JSON.stringify(cooldownObj));
+        cooldown(JSON.stringify(cooldownObj), msg.author.id, 'whosagoodboy');
       }
       else {
         cooldownNotice(msg, timeLeft);
@@ -264,7 +270,7 @@ module.exports = (commandArray, msg, client) => {
       else if (msg.channel.id != '598847956996718628') {
         if(!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
           fuck(commandArray, msg, client);
-          cooldown(JSON.stringify(cooldownObj));
+          cooldown(JSON.stringify(cooldownObj), msg.author.id, 'fuck');
         }
         else {
           cooldownNotice(msg, timeLeft);
@@ -277,7 +283,7 @@ module.exports = (commandArray, msg, client) => {
     case 'pant':
       if(!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
         pant(commandArray[2], msg, client);
-        cooldown(JSON.stringify(cooldownObj));
+        cooldown(JSON.stringify(cooldownObj), msg.author.id, 'pant');
       }
       else {
         cooldownNotice(msg, timeLeft);
@@ -307,7 +313,7 @@ module.exports = (commandArray, msg, client) => {
       else if (msg.channel.id != '598847956996718628') {
         if(!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
           suck(commandArray, msg, client);
-          cooldown(JSON.stringify(cooldownObj));
+          cooldown(JSON.stringify(cooldownObj), msg.author.id, 'suck');
         }
         else {
           cooldownNotice(msg, timeLeft);
@@ -317,11 +323,11 @@ module.exports = (commandArray, msg, client) => {
         msg.channel.send(`This can't be done in the SFW-Chat!`);
       }
       break;
-    // case 'cooldowns':
-    //   if(msg.author.id == '615687360138575893') {
-    //     seeCooldowns(msg, client, coolDowns, cooldownTime, startTime);
-    //   }
-    //   break;
+    case 'cooldowns':
+      if(msg.author.id == '615687360138575893' || msg.member.roles.cache.has(staffRoldID)) {
+        seeCooldowns(msg, client, coolDowns, cooldownTime, startTime);
+      }
+      break;
     default:
       console.log("no match");
   }

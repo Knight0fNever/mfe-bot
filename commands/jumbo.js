@@ -25,6 +25,7 @@ module.exports = (commandText, msg, main_client) => {
 
 function getEmoji(id) {
   try{
+    console.log(client.emojis);
     return client.emojis.resolve(id);
   }
   catch(e) {

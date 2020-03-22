@@ -1,14 +1,38 @@
-let util = require('util');
-const {parse, stringify} = require('flatted/cjs');
+const { embedBuilder } = require('../helper');
 
 module.exports = {
-  seeCooldowns: (msg, client, coolDowns, cooldownTime, startTime) => {
-    // let timeLeft = null;
-    // if (coolDowns[JSON.stringify(cooldownObj)] != undefined) {
-    //   timeLeft = Math.ceil(startTime + coolDowns[JSON.stringify(cooldownObj)]._idleStart + coolDowns[JSON.stringify(cooldownObj)]._idleTimeout - Date.now());
-    //   console.log(timeLeft);
-    // }
-    console.log()
-    console.log(parse(stringify(coolDowns))['"dadjoke-615687360138575893"']._idleStart);
+  seeCooldowns: async (msg, client, coolDowns, cooldownTime, startTime) => {
+    let fields = []
+
+    for(let key in coolDowns) {
+      let timeLeft = findTimeLeft(coolDowns[key].timer, startTime)
+      let user = await client.users.fetch(coolDowns[key].userID);
+      // console.log(user);
+      let object = {
+        'name': `${user.tag}`,
+        'value': `Action: ${coolDowns[key].action} | Time left: ${timeLeft.minutes} minutes and ${timeLeft.seconds} seconds`,
+        'inline': false
+      }
+      fields.push(object);
+    }
+    if(Object.entries(coolDowns).length === 0) {
+      msg.channel.send(`No active cooldowns`);
+    }
+    else {
+      let embed = embedBuilder('Cooldowns', msg.author, 'RANDOM', 'List of active cooldowns', undefined, fields);
+      msg.channel.send(embed);
+    }
+    
+  }
+}
+
+function findTimeLeft(timer, startTime) {
+  timeLeft = Math.ceil(startTime + timer._idleStart + timer._idleTimeout - Date.now());
+
+  let minutes = Math.floor(timeLeft / 60000);
+  let seconds = Math.floor(((timeLeft / 60000) - minutes) * 60);
+  return {
+    'minutes': minutes,
+    'seconds': seconds
   }
 }
