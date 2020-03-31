@@ -6,6 +6,7 @@ const startTime = Date.now();
 const help = require('./commands/help');
 const dadjoke = require('./commands/dadjoke');
 const avatar = require('./commands/avatar');
+const suggest = require('./commands/suggest');
 const e621 = require('./commands/e621');
 const { seeCooldowns } = require('./commands/admin');
 const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy, fuck, pant, eatPant, suck } = require('./commands/actions');
@@ -322,6 +323,9 @@ module.exports = (commandArray, msg, client) => {
       if(msg.author.id == '615687360138575893' || msg.member.roles.cache.has(staffRoldID)) {
         seeCooldowns(msg, client, coolDowns, cooldownTime, startTime);
       }
+      break;
+    case 'suggest':
+      suggest(msg, client);
       break;
     // case 'sqltest':
     //   sqltest(msg.author.id);
