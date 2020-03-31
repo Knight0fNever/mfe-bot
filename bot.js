@@ -10,7 +10,11 @@ let prefix = "mfe!";
 let current_env = "dev";
 let prod_token = process.env.PROD_TOKEN;
 let dev_token = process.env.DEV_TOKEN;
-const emote_only_channel = '694473076171210783';
+let emote_only_channel = '694473076171210783';
+
+if(current_env == 'dev') {
+  emote_only_channel = '663923940841750570';
+}
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
