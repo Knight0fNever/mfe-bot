@@ -1,7 +1,8 @@
 const startTime = Date.now();
 
 // const jumbo = require('./commands/jumbo');
-const ship = require('./commands/ship');
+// const ship = require('./commands/ship');
+// const { checkForCooldown, marry } = require('./db/db');
 const help = require('./commands/help');
 const dadjoke = require('./commands/dadjoke');
 const avatar = require('./commands/avatar');
@@ -51,13 +52,7 @@ module.exports = (commandArray, msg, client) => {
     //   }
     //   break;
     case 'dadjoke':
-      if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
         dadjoke(msg, client);
-        cooldown(JSON.stringify(cooldownObj), msg.author.id, 'dadjoke');
-      }
-      else {
-        cooldownNotice(msg, timeLeft);
-      }
       break;
     case 'avatar':
       avatar(commandArray[2], msg, client);
@@ -328,6 +323,9 @@ module.exports = (commandArray, msg, client) => {
         seeCooldowns(msg, client, coolDowns, cooldownTime, startTime);
       }
       break;
+    // case 'sqltest':
+    //   sqltest(msg.author.id);
+    //   break;
     default:
       console.log("no match");
   }

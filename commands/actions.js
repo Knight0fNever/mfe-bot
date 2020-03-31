@@ -203,7 +203,7 @@ module.exports = {
       targets = targets + target[i] + " ";
     }
     targets = targets.trim();
-    msg.channel.send(embedBuilder(`${msg.author} sneaks up behind ${targets} and steals their pant, quickly eating them in 2 big chomps.`, msg.author, `RANDOM`, `Eat Pant!`));
+    msg.channel.send(embedBuilder(`${msg.author} sneaks up behind ${targets} and steals their pant, quickly eating them in 1 big chomp.`, msg.author, `RANDOM`, `Eat Pant!`));
   }
 }
 
