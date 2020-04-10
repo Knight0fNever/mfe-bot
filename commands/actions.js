@@ -5,7 +5,7 @@ module.exports = {
   bellyrub: (target, msg, client) => {
     local_client = client;
     let targets = "";
-    for(let i = 2; i < target.length; i++) {
+    for (let i = 2; i < target.length; i++) {
       targets = targets + target[i] + " ";
     }
     targets = targets.trim();
@@ -14,7 +14,7 @@ module.exports = {
   boop: (target, msg, client) => {
     local_client = client;
     let targets = "";
-    for(let i = 2; i < target.length; i++) {
+    for (let i = 2; i < target.length; i++) {
       targets = targets + target[i] + " ";
     }
     targets = targets.trim();
@@ -23,7 +23,7 @@ module.exports = {
   cuddle: (target, msg, client) => {
     local_client = client;
     let targets = "";
-    for(let i = 2; i < target.length; i++) {
+    for (let i = 2; i < target.length; i++) {
       targets = targets + target[i] + " ";
     }
     targets = targets.trim();
@@ -32,17 +32,17 @@ module.exports = {
   flop: (target, msg, client) => {
     local_client = client;
     let targets = "";
-    for(let i = 2; i < target.length; i++) {
+    for (let i = 2; i < target.length; i++) {
       targets = targets + target[i] + " ";
     }
     targets = targets.trim();
     msg.channel.send(embedBuilder(`${msg.author} flopped on ${targets}'s pecs!`, msg.author, `RANDOM`, `Flop!`));
 
-  },  
+  },
   hug: (target, msg, client) => {
     local_client = client;
     let targets = "";
-    for(let i = 2; i < target.length; i++) {
+    for (let i = 2; i < target.length; i++) {
       targets = targets + target[i] + " ";
     }
     targets = targets.trim();
@@ -51,7 +51,7 @@ module.exports = {
   kiss: (target, msg, client) => {
     local_client = client;
     let targets = "";
-    for(let i = 2; i < target.length; i++) {
+    for (let i = 2; i < target.length; i++) {
       targets = targets + target[i] + " ";
     }
     targets = targets.trim();
@@ -60,7 +60,7 @@ module.exports = {
   lick: (target, msg, client) => {
     local_client = client;
     let targets = "";
-    for(let i = 2; i < target.length; i++) {
+    for (let i = 2; i < target.length; i++) {
       targets = targets + target[i] + " ";
     }
     targets = targets.trim();
@@ -70,7 +70,7 @@ module.exports = {
   nap: (target, msg, client) => {
     local_client = client;
     let targets = "";
-    for(let i = 2; i < target.length; i++) {
+    for (let i = 2; i < target.length; i++) {
       targets = targets + target[i] + " ";
     }
     targets = targets.trim();
@@ -79,7 +79,7 @@ module.exports = {
   nuzzle: (target, msg, client) => {
     local_client = client;
     let targets = "";
-    for(let i = 2; i < target.length; i++) {
+    for (let i = 2; i < target.length; i++) {
       targets = targets + target[i] + " ";
     }
     targets = targets.trim();
@@ -88,7 +88,7 @@ module.exports = {
   pat: (target, msg, client) => {
     local_client = client;
     let targets = "";
-    for(let i = 2; i < target.length; i++) {
+    for (let i = 2; i < target.length; i++) {
       targets = targets + target[i] + " ";
     }
     targets = targets.trim();
@@ -97,7 +97,7 @@ module.exports = {
   poke: (target, msg, client) => {
     local_client = client;
     let targets = "";
-    for(let i = 2; i < target.length; i++) {
+    for (let i = 2; i < target.length; i++) {
       targets = targets + target[i] + " ";
     }
     targets = targets.trim();
@@ -106,7 +106,7 @@ module.exports = {
   pounce: (target, msg, client) => {
     local_client = client;
     let targets = "";
-    for(let i = 2; i < target.length; i++) {
+    for (let i = 2; i < target.length; i++) {
       targets = targets + target[i] + " ";
     }
     targets = targets.trim();
@@ -115,7 +115,7 @@ module.exports = {
   slap: (target, msg, client) => {
     local_client = client;
     let targets = "";
-    for(let i = 2; i < target.length; i++) {
+    for (let i = 2; i < target.length; i++) {
       targets = targets + target[i] + " ";
     }
     targets = targets.trim();
@@ -124,7 +124,7 @@ module.exports = {
   sniff: (target, msg, client) => {
     local_client = client;
     let targets = "";
-    for(let i = 2; i < target.length; i++) {
+    for (let i = 2; i < target.length; i++) {
       targets = targets + target[i] + " ";
     }
     targets = targets.trim();
@@ -133,7 +133,7 @@ module.exports = {
   spray: (target, msg, client) => {
     local_client = client;
     let targets = "";
-    for(let i = 2; i < target.length; i++) {
+    for (let i = 2; i < target.length; i++) {
       targets = targets + target[i] + " ";
     }
     targets = targets.trim();
@@ -146,7 +146,7 @@ module.exports = {
   whosagoodboy: (target, msg, client) => {
     local_client = client;
     let targets = "";
-    for(let i = 2; i < target.length; i++) {
+    for (let i = 2; i < target.length; i++) {
       targets = targets + target[i] + " ";
     }
     targets = targets.trim();
@@ -155,55 +155,73 @@ module.exports = {
   fuck: (target, msg, client) => {
     local_client = client;
     let targets = "";
-    for(let i = 2; i < target.length; i++) {
+    for (let i = 2; i < target.length; i++) {
       targets = targets + target[i] + " ";
     }
     targets = targets.trim();
-    if(msg.mentions.users.first() != undefined) {
-      if(msg.author.id == msg.mentions.users.first().id) {
+    if (msg.mentions.users.first() != undefined) {
+      if (msg.author.id == msg.mentions.users.first().id) {
         msg.channel.send("<:judging:633193950299291658>");
       }
       else {
         msg.channel.send(embedBuilder(`${msg.author} bends ${targets} over and fucks them! Everyone look away.. or not`, msg.author, `RANDOM`, `Fuck!`));
       }
-    } 
+    }
   },
   suck: (target, msg, client) => {
     local_client = client;
     let targets = "";
-    for(let i = 2; i < target.length; i++) {
+    for (let i = 2; i < target.length; i++) {
       targets = targets + target[i] + " ";
     }
     targets = targets.trim();
-    if(msg.mentions.users.first() != undefined) {
-      if(msg.author.id == msg.mentions.users.first().id) {
+    if (msg.mentions.users.first() != undefined) {
+      if (msg.author.id == msg.mentions.users.first().id) {
         msg.channel.send("<:judging:633193950299291658>");
       }
       else {
         msg.channel.send(embedBuilder(`${msg.author} sucks ${targets} hungrily, slightly gagging on their thick cock.`, msg.author, `RANDOM`, `Suck!`));
       }
-    } 
+    }
   },
   pant: (target, msg, client) => {
     local_client = client;
     const user = msg.mentions.users.first();
-    if(user == undefined) {
+    if (user == undefined) {
       let embed = embedBuilder(`${msg.author} removes their pant and then donates them to <@!250006896369598468>, the pant eater!`, msg.author, `RANDOM`, `Pant!`)
       msg.channel.send(embed);
     }
     else {
       let embed = embedBuilder(`${msg.author} removes their pant and then gives them to <@${user.id}>!`, msg.author, `RANDOM`, `Pant!`)
       msg.channel.send(embed);
-  }
+    }
   },
   eatPant: (target, msg, client) => {
     local_client = client;
     let targets = "";
-    for(let i = 2; i < target.length; i++) {
+    for (let i = 2; i < target.length; i++) {
       targets = targets + target[i] + " ";
     }
     targets = targets.trim();
     msg.channel.send(embedBuilder(`${msg.author} sneaks up behind ${targets} and steals their pant, quickly eating them in 1 big chomp.`, msg.author, `RANDOM`, `Eat Pant!`));
+  },
+  rub: (target, msg, client) => {
+    local_client = client;
+    let targets = "";
+    for (let i = 2; i < target.length; i++) {
+      targets = targets + target[i] + " ";
+    }
+    targets = targets.trim();
+    msg.channel.send(embedBuilder(`${msg.author} rubs ${targets} with both hands!`, msg.author, `RANDOM`, `Rub!`));
+  },
+  tie: (target, msg, client) => {
+    local_client = client;
+    let targets = "";
+    for (let i = 2; i < target.length; i++) {
+      targets = targets + target[i] + " ";
+    }
+    targets = targets.trim();
+    msg.channel.send(embedBuilder(`${msg.author} ties ${targets} to the bed with thick rope! They couldn't get away if they tried..`, msg.author, `RANDOM`, `Tie!`));
   }
 }
 

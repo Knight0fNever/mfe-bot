@@ -9,7 +9,7 @@ const avatar = require('./commands/avatar');
 const suggest = require('./commands/suggest');
 const e621 = require('./commands/e621');
 const { seeCooldowns } = require('./commands/admin');
-const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy, fuck, pant, eatPant, suck } = require('./commands/actions');
+const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy, fuck, pant, eatPant, suck, rub, tie } = require('./commands/actions');
 
 const staffRoldID = '599972688932372482';
 
@@ -40,7 +40,7 @@ function cooldownNotice(msg, timeLeft) {
 module.exports = (commandArray, msg, client) => {
   let cooldownObj = `${commandArray[1].toLowerCase()}-${msg.author.id}`;
   let timeLeft = null;
-  if(coolDowns[JSON.stringify(cooldownObj)] != undefined) {
+  if (coolDowns[JSON.stringify(cooldownObj)] != undefined) {
     timeLeft = Math.ceil(startTime + coolDowns[JSON.stringify(cooldownObj)].timer._idleStart + coolDowns[JSON.stringify(cooldownObj)].timer._idleTimeout - Date.now());
   }
   switch (commandArray[1].toLowerCase()) {
@@ -53,7 +53,7 @@ module.exports = (commandArray, msg, client) => {
     //   }
     //   break;
     case 'dadjoke':
-        dadjoke(msg, client);
+      dadjoke(msg, client);
       break;
     case 'avatar':
       avatar(commandArray[2], msg, client);
@@ -110,7 +110,7 @@ module.exports = (commandArray, msg, client) => {
       if (commandArray.length <= 2) {
         msg.channel.send(`Sorry, you must include a target of your action!`);
       }
-      else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))){
+      else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
         hug(commandArray, msg, client);
         cooldown(JSON.stringify(cooldownObj), msg.author.id, 'hug');
       }
@@ -122,7 +122,7 @@ module.exports = (commandArray, msg, client) => {
       if (commandArray.length <= 2) {
         msg.channel.send(`Sorry, you must include a target of your action!`);
       }
-      else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))){
+      else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
         kiss(commandArray, msg, client);
         cooldown(JSON.stringify(cooldownObj), msg.author.id, 'kiss');
       }
@@ -134,7 +134,7 @@ module.exports = (commandArray, msg, client) => {
       if (commandArray.length <= 2) {
         msg.channel.send(`Sorry, you must include a target of your action!`);
       }
-      else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))){
+      else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
         lick(commandArray, msg, client);
         cooldown(JSON.stringify(cooldownObj), msg.author.id, 'lick');
       }
@@ -146,7 +146,7 @@ module.exports = (commandArray, msg, client) => {
       if (commandArray.length <= 2) {
         msg.channel.send(`Sorry, you must include a target of your action!`);
       }
-      else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))){
+      else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
         nap(commandArray, msg, client);
         cooldown(JSON.stringify(cooldownObj), msg.author.id, 'nap');
       }
@@ -158,7 +158,7 @@ module.exports = (commandArray, msg, client) => {
       if (commandArray.length <= 2) {
         msg.channel.send(`Sorry, you must include a target of your action!`);
       }
-      else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))){
+      else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
         nuzzle(commandArray, msg, client);
         cooldown(JSON.stringify(cooldownObj), msg.author.id, 'nuzzle');
       }
@@ -170,7 +170,7 @@ module.exports = (commandArray, msg, client) => {
       if (commandArray.length <= 2) {
         msg.channel.send(`Sorry, you must include a target of your action!`);
       }
-      else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))){
+      else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
         pat(commandArray, msg, client);
         cooldown(JSON.stringify(cooldownObj), msg.author.id, 'pat');
       }
@@ -182,7 +182,7 @@ module.exports = (commandArray, msg, client) => {
       if (commandArray.length <= 2) {
         msg.channel.send(`Sorry, you must include a target of your action!`);
       }
-      else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))){
+      else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
         pounce(commandArray, msg, client);
         cooldown(JSON.stringify(cooldownObj), msg.author.id, 'pounce');
       }
@@ -194,7 +194,7 @@ module.exports = (commandArray, msg, client) => {
       if (commandArray.length <= 2) {
         msg.channel.send(`Sorry, you must include a target of your action!`);
       }
-      else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))){
+      else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
         poke(commandArray, msg, client);
         cooldown(JSON.stringify(cooldownObj), msg.author.id, 'poke');
       }
@@ -206,7 +206,7 @@ module.exports = (commandArray, msg, client) => {
       if (commandArray.length <= 2) {
         msg.channel.send(`Sorry, you must include a target of your action!`);
       }
-      else if(!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
+      else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
         slap(commandArray, msg, client);
         cooldown(JSON.stringify(cooldownObj), msg.author.id, 'slap');
       }
@@ -218,7 +218,7 @@ module.exports = (commandArray, msg, client) => {
       if (commandArray.length <= 2) {
         msg.channel.send(`Sorry, you must include a target of your action!`);
       }
-      else if(!usedCommandRecently.has(JSON.stringify(cooldownObj))){
+      else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
         sniff(commandArray, msg, client);
         cooldown(JSON.stringify(cooldownObj), msg.author.id, 'sniff');
       }
@@ -230,7 +230,7 @@ module.exports = (commandArray, msg, client) => {
       if (commandArray.length <= 2) {
         msg.channel.send(`Sorry, you must include a target of your action!`);
       }
-      else if(!usedCommandRecently.has(JSON.stringify(cooldownObj))){
+      else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
         spray(commandArray, msg, client);
         cooldown(JSON.stringify(cooldownObj), msg.author.id, 'spray');
       }
@@ -245,7 +245,7 @@ module.exports = (commandArray, msg, client) => {
       if (commandArray.length <= 2) {
         msg.channel.send(`Sorry, you must include a target of your action!`);
       }
-      else if(!usedCommandRecently.has(JSON.stringify(cooldownObj))){
+      else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
         whosagoodboy(commandArray, msg, client);
         cooldown(JSON.stringify(cooldownObj), msg.author.id, 'whosagoodboy');
       }
@@ -264,7 +264,7 @@ module.exports = (commandArray, msg, client) => {
         msg.channel.send(`Sorry, you must include a target of your action!`);
       }
       else if (msg.channel.id != '598847956996718628') {
-        if(!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
+        if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
           fuck(commandArray, msg, client);
           cooldown(JSON.stringify(cooldownObj), msg.author.id, 'fuck');
         }
@@ -277,7 +277,7 @@ module.exports = (commandArray, msg, client) => {
       }
       break;
     case 'pant':
-      if(!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
+      if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
         pant(commandArray[2], msg, client);
         cooldown(JSON.stringify(cooldownObj), msg.author.id, 'pant');
       }
@@ -307,7 +307,7 @@ module.exports = (commandArray, msg, client) => {
         msg.channel.send(`Sorry, you must include a target of your action!`);
       }
       else if (msg.channel.id != '598847956996718628') {
-        if(!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
+        if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
           suck(commandArray, msg, client);
           cooldown(JSON.stringify(cooldownObj), msg.author.id, 'suck');
         }
@@ -320,16 +320,47 @@ module.exports = (commandArray, msg, client) => {
       }
       break;
     case 'cooldowns':
-      if(msg.author.id == '615687360138575893' || msg.member.roles.cache.has(staffRoldID)) {
+      if (msg.author.id == '615687360138575893' || msg.member.roles.cache.has(staffRoldID)) {
         seeCooldowns(msg, client, coolDowns, cooldownTime, startTime);
       }
       break;
     case 'suggest':
       suggest(commandArray, msg, client);
       break;
-    // case 'sqltest':
-    //   sqltest(msg.author.id);
-    //   break;
+    case 'rub':
+      if (commandArray.length <= 2) {
+        msg.channel.send(`Sorry, you must include a target of your action!`);
+      }
+      else if (msg.channel.id != '598847956996718628') {
+        if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
+          rub(commandArray, msg, client);
+          cooldown(JSON.stringify(cooldownObj), msg.author.id, 'rub');
+        }
+        else {
+          cooldownNotice(msg, timeLeft);
+        }
+      }
+      else {
+        msg.channel.send(`This can't be done in the SFW-Chat!`);
+      }
+      break;
+    case 'tie':
+      if (commandArray.length <= 2) {
+        msg.channel.send(`Sorry, you must include a target of your action!`);
+      }
+      else if (msg.channel.id != '598847956996718628') {
+        if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
+          tie(commandArray, msg, client);
+          cooldown(JSON.stringify(cooldownObj), msg.author.id, 'tie');
+        }
+        else {
+          cooldownNotice(msg, timeLeft);
+        }
+      }
+      else {
+        msg.channel.send(`This can't be done in the SFW-Chat!`);
+      }
+      break;
     default:
       console.log("no match");
   }
