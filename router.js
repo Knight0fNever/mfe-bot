@@ -12,6 +12,7 @@ const { seeCooldowns } = require('./commands/admin');
 const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy, fuck, pant, eatPant, suck, rub, tie } = require('./commands/actions');
 
 const staffRoldID = '599972688932372482';
+const myID = '615687360138575893'
 
 const usedCommandRecently = new Set();
 const cooldownTime = 300000;
@@ -20,14 +21,16 @@ let coolDowns = {
 };
 
 function cooldown(cooldownObj, id, action) {
-  usedCommandRecently.add(cooldownObj);
-  coolDowns[cooldownObj] = {
-    'userID': id,
-    'action': action,
-    'timer': setTimeout(() => {
-      usedCommandRecently.delete(cooldownObj);
-      delete coolDowns[cooldownObj];
-    }, cooldownTime)
+  if (id != myID) {
+    usedCommandRecently.add(cooldownObj);
+    coolDowns[cooldownObj] = {
+      'userID': id,
+      'action': action,
+      'timer': setTimeout(() => {
+        usedCommandRecently.delete(cooldownObj);
+        delete coolDowns[cooldownObj];
+      }, cooldownTime)
+    }
   }
 }
 
