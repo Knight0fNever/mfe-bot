@@ -5,8 +5,9 @@ module.exports = async (id, msg, client) => {
   // console.log(client);
   local_client = client;
   let userID = '';
+  let fields = [];
 
-  if(msg.mentions.users.first() != undefined) {
+  if (msg.mentions.users.first() != undefined) {
     userID = msg.mentions.users.first().id;
   }
   else {
@@ -21,33 +22,63 @@ module.exports = async (id, msg, client) => {
 
   // console.log(guildUser.joinedAt);
 
-  let fields = [
-    {
-      "name": "Username",
-      "value": user.tag,
-      "inline": true
-    },
-    {
-      "name": "User ID",
-      "value": user.id,
-      "inline": true
-    },
-    {
-      "name": "Status",
-      "value": user.presence.status,
-      "inline": true
-    },
-    {
-      "name": "Created",
-      "value": `${moment.utc(user.createdAt).format('MM/DD/YY h:mm:ss a')}\n ${moment.utc(user.createdAt).fromNow()}`,
-      "inline": true
-    },
-    {
-      "name": "Joined",
-      "value": `${moment.utc(guildUser.joinedAt).format('MM/DD/YY h:mm:ss a')}\n ${moment.utc(guildUser.joinedAt).fromNow()}`,
-      "inline": true
-    },
-  ]
+  if (guildUser != undefined) {
+    fields = [
+      {
+        "name": "Username",
+        "value": user.tag,
+        "inline": true
+      },
+      {
+        "name": "User ID",
+        "value": user.id,
+        "inline": true
+      },
+      {
+        "name": "Status",
+        "value": user.presence.status,
+        "inline": true
+      },
+      {
+        "name": "Created",
+        "value": `${moment.utc(user.createdAt).format('MM/DD/YY h:mm:ss a')}\n ${moment.utc(user.createdAt).fromNow()}`,
+        "inline": true
+      },
+      {
+        "name": "Joined",
+        "value": `${moment.utc(guildUser.joinedAt).format('MM/DD/YY h:mm:ss a')}\n ${moment.utc(guildUser.joinedAt).fromNow()}`,
+        "inline": true
+      },
+    ]
+  }
+  else {
+    fields = [
+      {
+        "name": "Username",
+        "value": user.tag,
+        "inline": true
+      },
+      {
+        "name": "User ID",
+        "value": user.id,
+        "inline": true
+      },
+      {
+        "name": "Status",
+        "value": user.presence.status,
+        "inline": true
+      },
+      {
+        "name": "Created",
+        "value": `${moment.utc(user.createdAt).format('MM/DD/YY h:mm:ss a')}\n ${moment.utc(user.createdAt).fromNow()}`,
+        "inline": true
+      }
+    ]
+  }
+
+
+
+
 
   let embed = new MessageEmbed()
     .addFields(fields)
