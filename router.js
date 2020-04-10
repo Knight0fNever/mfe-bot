@@ -325,7 +325,7 @@ module.exports = (commandArray, msg, client) => {
       }
       break;
     case 'suggest':
-      suggest(msg, client);
+      suggest(commandArray, msg, client);
       break;
     // case 'sqltest':
     //   sqltest(msg.author.id);
