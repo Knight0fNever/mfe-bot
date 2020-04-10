@@ -14,17 +14,22 @@ module.exports = (msg, command) => {
         "inline": true
       },
       {
-        "name": "Dad Joke",
+        "name": "**User Profile**",
+        "value": "`mfe! profile <@user/ID>`",
+        "inline": true
+      },
+      {
+        "name": "**Dad Joke**",
         "value": "`mfe! dadjoke`",
         "inline": true
       },
       {
-        "name": "e621",
+        "name": "**e621**",
         "value": "`mfe! e621 <search>`",
         "inline": true
       },
       {
-        "name": "suggest - sends a suggestion for the bot to the developer",
+        "name": "**suggest - sends a suggestion for the bot to the developer**",
         "value": "`mfe! suggest <suggestion>`",
         "inline": true
       }
