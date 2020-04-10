@@ -3,6 +3,7 @@ const startTime = Date.now();
 // const jumbo = require('./commands/jumbo');
 // const ship = require('./commands/ship');
 // const { checkForCooldown, marry } = require('./db/db');
+const profile = require('./commands/profile');
 const help = require('./commands/help');
 const dadjoke = require('./commands/dadjoke');
 const avatar = require('./commands/avatar');
@@ -60,6 +61,9 @@ module.exports = (commandArray, msg, client) => {
       break;
     case 'avatar':
       avatar(commandArray[2], msg, client);
+      break;
+    case 'profile':
+      profile(commandArray[2], msg, client);
       break;
     case 'bellyrub':
       if (commandArray.length <= 2) {
