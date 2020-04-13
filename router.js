@@ -11,6 +11,7 @@ const suggest = require('./commands/suggest');
 const e621 = require('./commands/e621');
 const { seeCooldowns } = require('./commands/admin');
 const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy, fuck, pant, eatPant, suck, rub, tie } = require('./commands/actions');
+const { stats } = require('./commands/stats');
 
 const staffRoldID = '599972688932372482';
 const myID = '615687360138575893'
@@ -367,6 +368,9 @@ module.exports = (commandArray, msg, client) => {
       else {
         msg.channel.send(`This can't be done in the SFW-Chat!`);
       }
+      break;
+    case 'stats':
+      stats(msg, client);
       break;
     default:
       console.log("no match");
