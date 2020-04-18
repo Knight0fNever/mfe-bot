@@ -44,7 +44,6 @@ let functions = {
       }
     ])
     .setAuthor('Server Stats')
-    // .setDescription(``)
     .setTimestamp(Date.now())
     .setThumbnail(guild.iconURL())
 

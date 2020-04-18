@@ -1,7 +1,7 @@
 const startTime = Date.now();
 
 // const jumbo = require('./commands/jumbo');
-// const ship = require('./commands/ship');
+const ship = require('./commands/ship');
 // const { checkForCooldown, marry } = require('./db/db');
 const profile = require('./commands/profile');
 const help = require('./commands/help');
@@ -303,6 +303,14 @@ module.exports = (commandArray, msg, client) => {
       }
       else {
         msg.channel.send(`Sorry, you can't eat pant.`);
+      }
+      break;
+    case 'ship':
+      if(commandArray.length <= 3) {
+        msg.channel.send(`Sorry, you must include 2 targets seperated by a space.`);
+      }
+      else {
+        ship(commandArray[2], commandArray[3], msg, client);
       }
       break;
     case 'e621':
