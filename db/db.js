@@ -13,71 +13,7 @@ let config = {
 
 sql.on('error', err => {
   console.log(err);
-})
-
-let relateCoolDowns = {
-
-};
-
-const relateCoolDownTime = 300000;
-
-const currentProposals = new Set();
-
-
-async function marry(msg, client, user1, user2) {
-  if(!await checkForRelationship(user1, user2, 'marriage')) {
-    // Check for permission
-    msg.channel.send(`<@${user1}> has proposed to ${user2}, does ${user2} accept?`);
-    let cooldownObj = `${user2}-marriage`;
-    realateCooldown(cooldownObj, user1, user2, 'marriage');
-  }
-  else {
-    msg.channel.send('Sorry, that relationship already exists!');
-  }
-}
-
-async function checkForCooldown(msg, user2, relationship) {
-  // If current question
-  if(relateCoolDowns[JSON.stringify(`${user2}-${relationship}`)] != undefined) {
-    // Evaluate answer
-    if(msg.content.toLowerCase() == 'yes') {
-      // Yes
-      console.log("Said Yes. Record in DB");
-    }
-    else if(msg.content.toLowerCase() == 'no') {
-      // No
-      console.log("Said No.");
-    }
-    else {
-      // Answer not valid
-      console.log("Answer not valid");
-    }
-  }
-  else {
-    // Do nothing
-  }
-}
-
-// async function addQuestion(user1, user2, relationship) {
-
-// }
-
-// async function removeQuestion(user1, user2, relationship) {
-
-// }
-
-function realateCooldown(cooldownObj, user1, user2, relationship) {
-  currentProposals.add(cooldownObj);
-  relateCoolDowns[cooldownObj] = {
-    'user1': user1,
-    'user2': user2,
-    'relationship': relationship,
-    'timer': setTimeout(() => {
-      currentProposals.delete(cooldownObj);
-      delete relateCoolDowns[cooldownObj];
-    }, relateCoolDownTime)
-  }
-}
+});
 
 async function addRelationship(user1, user2, relationshipInt) {
   try {
@@ -127,6 +63,5 @@ async function deleteRelationship(user1, user2, relationship) {
 }
 
 module.exports = {
-  marry: marry,
-  checkForCooldown: checkForCooldown
+  checkForRelationship
 }
