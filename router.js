@@ -1,7 +1,7 @@
 const startTime = Date.now();
 
 // const jumbo = require('./commands/jumbo');
-const ship = require('./commands/ship');
+// const ship = require('./commands/ship');
 // const { checkForCooldown, marry } = require('./db/db');
 const profile = require('./commands/profile');
 const help = require('./commands/help');

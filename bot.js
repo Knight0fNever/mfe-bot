@@ -2,8 +2,8 @@ require('dotenv').config()
 const { Client } = require('discord.js');
 const client = new Client();
 const router = require('./router');
-const emote = require('./emote-only');
-const lesbianBoost = require('./lesbian-boost');
+// const emote = require('./emote-only');
+// const lesbianBoost = require('./lesbian-boost');
 
 
 
