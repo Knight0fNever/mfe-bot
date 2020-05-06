@@ -1,3 +1,5 @@
+var randomColor = require('randomcolor');
+var converter = require('hex2dec');
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
@@ -16,5 +18,10 @@ module.exports = {
       }
   
     return response;
+  },
+  getRandomColor: () => {
+    let color = randomColor();
+    // console.log(color);
+    return converter.hexToDec(color.substring(1));
   }
 }

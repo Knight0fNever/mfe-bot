@@ -1,9 +1,21 @@
 const { embedBuilder } = require('../helper');
 
 module.exports = {
-  seeCooldowns: async (msg, client, coolDowns, cooldownTime, startTime) => {
-    let fields = []
+  seeCooldowns: {
+    "name": "cooldowns",
+    "command": functions.coolDowns,
+    "options": {
+      description: "cooldowns",
+      fullDescription: "See active cooldowns",
+      usage: ""
+    }
+  }
+}
 
+let functions = {
+  coolDowns: async (msg, client, coolDowns, cooldownTime, startTime) => {
+    let fields = []
+  
     for(let key in coolDowns) {
       let timeLeft = findTimeLeft(coolDowns[key].timer, startTime)
       let user = await client.users.fetch(coolDowns[key].userID);
@@ -25,6 +37,7 @@ module.exports = {
     
   }
 }
+
 
 function findTimeLeft(timer, startTime) {
   timeLeft = Math.ceil(startTime + timer._idleStart + timer._idleTimeout - Date.now());

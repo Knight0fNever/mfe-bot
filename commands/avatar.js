@@ -1,16 +1,48 @@
-const { embedBuilder } = require('../helper');
+const helper = require('../helper');
 
-module.exports = (target, msg, client) => {
-  const user = msg.mentions.users.first();
-  if(user == undefined) {
-    let embed = embedBuilder(`Avatar Showcase`, msg.author, `RANDOM`, ``, msg.author.avatarURL({"size": 2048}));
-    msg.channel.send(embed);
+module.exports = {
+  "name": "avatar",
+  "command": avatar,
+  "options": {
+    description: "avatar",
+    fullDescription: "Shows the user's full avatar",
+    usage: "<tags (up to 3)>"
+  }
+}
+
+
+function avatar(msg, args) {
+  const user = msg.mentions[0]
+  console.log(`User:\n ${user}`);
+  console.log(`Author:\n ${msg.author.dynamicAvatarURL('png', 2048)}`);
+
+
+  let avatarURL = "";
+
+
+
+  if (user == undefined) {
+    avatarURL = msg.author.dynamicAvatarURL('png', 2048);
   }
   else {
-    let embed = embedBuilder(`Avatar Showcase`, msg.author, `RANDOM`, ``, user.avatarURL({"size": 2048}));
-    msg.channel.send(embed);
+    avatarURL = user.dynamicAvatarURL('png', 2048);
   }
-  
+
+  let json = {
+    "embed": {
+      "description": "Avatar Showcase",
+      "color": helper.getRandomColor(),
+      "author": {
+        "name": `${msg.author.username}#${msg.author.discriminator}`,
+        "icon_url": msg.author.avatarURL
+      },
+      "image": {
+        "url": avatarURL
+      }
+    }
+  }
+
+  msg.channel.createMessage(json);
 }
 
 function getUserID(target) {

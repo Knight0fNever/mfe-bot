@@ -1,14 +1,25 @@
 const fetch = require('node-fetch');
-let client = null;
+const { Command } = require('eris');
 
-module.exports = (msg, parent_client) => {
-  client = parent_client;
+
+module.exports = {
+  "name": "dadjoke",
+  "command": dadjoke,
+  "options": {
+    description: "Random Dad joke",
+    fullDescription: "Gives a random Dad joke",
+    usage: "dadjoke"
+  }
+}
+
+
+function dadjoke(msg) {
   fetch('https://icanhazdadjoke.com/', {
-    headers: {'Accept': 'application/json'},
+    headers: { 'Accept': 'application/json' },
     method: 'get'
   })
     .then(res => res.json())
     .then(json => {
-      msg.channel.send(json.joke);
+      msg.channel.createMessage(json.joke);
     });
 }
