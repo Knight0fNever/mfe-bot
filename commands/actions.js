@@ -251,7 +251,7 @@ module.exports = {
         msg.channel.send("<:judging:633193950299291658>");
       }
       else {
-        msg.channel.send(embedBuilder(`${msg.author} forces ${targets} onto their knees as they eagerly open their maw. Grabbing the back of ${targets}'s head, ${msg.author} thrusts their throbbing member into their mouth with little mercy. ${targets} is only able to choke and gargle as their throat is violated repeatedly.`, msg.author, `RANDOM`, `Ride!`));
+        msg.channel.send(embedBuilder(`${msg.author} forces ${targets} onto their knees as they eagerly open their maw. Grabbing the back of ${targets}'s head, ${msg.author} thrusts their throbbing member into their mouth with little mercy. ${targets} is only able to choke and gargle as their throat is violated repeatedly.`, msg.author, `RANDOM`, `Face Fuck!`));
       }
     }
   }
