@@ -235,7 +235,23 @@ module.exports = {
         msg.channel.send("<:judging:633193950299291658>");
       }
       else {
-        msg.channel.send(embedBuilder(`${msg.author} holds ${targets} down and straddles their hips. Reaching back and gripping the throbbing cock, ${msg.author} presses it against their eager hole and sits back; taking the full length of ${targets}'s cock in one, fluid motion.`, msg.author, `RANDOM`, `Ride!`));
+        msg.channel.send(embedBuilder(`${msg.author} holds ${targets} down and straddles their hips. Reaching back and gripping the throbbing cock, ${msg.author} presses it against their eager hole and sits back; taking the full length of ${targets}'s member in one, fluid motion.`, msg.author, `RANDOM`, `Ride!`));
+      }
+    }
+  },
+  facefuck: (target, msg, client) => {
+    local_client = client;
+    let targets = "";
+    for (let i = 2; i < target.length; i++) {
+      targets = targets + target[i] + " ";
+    }
+    targets = targets.trim();
+    if (msg.mentions.users.first() != undefined) {
+      if (msg.author.id == msg.mentions.users.first().id) {
+        msg.channel.send("<:judging:633193950299291658>");
+      }
+      else {
+        msg.channel.send(embedBuilder(`${msg.author} forces ${targets} onto their knees as they eagerly open their maw. Grabbing the back of ${targets}'s head, ${msg.author} thrusts their throbbing member into their mouth with little mercy. ${targets} is only able to choke and gargle as their throat is violated repeatedly.`, msg.author, `RANDOM`, `Ride!`));
       }
     }
   }
