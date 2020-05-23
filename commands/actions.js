@@ -254,6 +254,15 @@ module.exports = {
         msg.channel.send(embedBuilder(`${msg.author} forces ${targets} onto their knees as they eagerly open their maw. Grabbing the back of ${targets}'s head, ${msg.author} thrusts their throbbing member into their mouth with little mercy. ${targets} is only able to choke and gargle as their throat is violated repeatedly.`, msg.author, `RANDOM`, `Face Fuck!`));
       }
     }
+  },
+  holdhands: (target, msg, client) => {
+    local_client = client;
+    let targets = "";
+    for (let i = 2; i < target.length; i++) {
+      targets = targets + target[i] + " ";
+    }
+    targets = targets.trim();
+    msg.channel.send(embedBuilder(`${msg.author} reaches over to ${targets}, brushing their hand with the back of their own. Slowly, they interlock fingers as they stare deeply into each other's eyes.`, msg.author, `RANDOM`, `Holds Hands!`, `https://cdn.discordapp.com/emojis/670335536136847360.gif?v=1`));
   }
 }
 

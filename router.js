@@ -10,7 +10,7 @@ const avatar = require('./commands/avatar');
 const suggest = require('./commands/suggest');
 const e621 = require('./commands/e621');
 const { seeCooldowns } = require('./commands/admin');
-const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy, fuck, pant, eatPant, suck, rub, tie, ride, facefuck } = require('./commands/actions');
+const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy, fuck, pant, eatPant, suck, rub, tie, ride, facefuck, holdhands } = require('./commands/actions');
 const { stats } = require('./commands/stats');
 
 const staffRoldID = '599972688932372482';
@@ -412,6 +412,18 @@ module.exports = (commandArray, msg, client) => {
       }
       else {
         msg.channel.send(`This can't be done in the SFW-Chat!`);
+      }
+      break;
+    case 'holdhands':
+      if (commandArray.length <= 2) {
+        msg.channel.send(`Sorry, you must include a target of your action!`);
+      }
+      else if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
+        holdhands(commandArray, msg, client);
+        cooldown(JSON.stringify(cooldownObj), msg.author.id, 'holdhands');
+      }
+      else {
+        cooldownNotice(msg, timeLeft);
       }
       break;
     default:
