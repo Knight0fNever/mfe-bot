@@ -222,6 +222,22 @@ module.exports = {
     }
     targets = targets.trim();
     msg.channel.send(embedBuilder(`${msg.author} ties ${targets} to the bed with thick rope! They couldn't get away if they tried..`, msg.author, `RANDOM`, `Tie!`));
+  },
+  ride: (target, msg, client) => {
+    local_client = client;
+    let targets = "";
+    for (let i = 2; i < target.length; i++) {
+      targets = targets + target[i] + " ";
+    }
+    targets = targets.trim();
+    if (msg.mentions.users.first() != undefined) {
+      if (msg.author.id == msg.mentions.users.first().id) {
+        msg.channel.send("<:judging:633193950299291658>");
+      }
+      else {
+        msg.channel.send(embedBuilder(`${msg.author} holds ${targets} down and straddles their hips. Reaching back and gripping the throbbing cock, ${msg.author} presses it against their eager hole and sits back; taking the full length of ${targets}'s cock in one, fluid motion.`, msg.author, `RANDOM`, `Ride!`));
+      }
+    }
   }
 }
 
