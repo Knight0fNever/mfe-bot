@@ -1,6 +1,6 @@
 const startTime = Date.now();
 
-// const jumbo = require('./commands/jumbo');
+const jumbo = require('./commands/jumbo');
 // const ship = require('./commands/ship');
 // const { checkForCooldown, marry } = require('./db/db');
 const profile = require('./commands/profile');
@@ -49,14 +49,14 @@ module.exports = (commandArray, msg, client) => {
     timeLeft = Math.ceil(startTime + coolDowns[JSON.stringify(cooldownObj)].timer._idleStart + coolDowns[JSON.stringify(cooldownObj)].timer._idleTimeout - Date.now());
   }
   switch (commandArray[1].toLowerCase()) {
-    // case 'jumbo':
-    //   if (commandArray.length <= 2) {
-    //     msg.channel.send(`Sorry, you most give me an emote to jumbo!`);
-    //   }
-    //   else {
-    //     jumbo(commandArray[2], msg, client);
-    //   }
-    //   break;
+    case 'jumbo':
+      if (commandArray.length <= 2) {
+        msg.channel.send(`Sorry, you most give me an emote to jumbo!`);
+      }
+      else {
+        jumbo(commandArray[2], msg, client);
+      }
+      break;
     case 'dadjoke':
       dadjoke(msg, client);
       break;

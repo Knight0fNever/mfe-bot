@@ -8,6 +8,7 @@ module.exports = {
     for (let i = 2; i < target.length; i++) {
       targets = targets + target[i] + " ";
     }
+    console.log(msg.content);
     targets = targets.trim();
     msg.channel.send(embedBuilder(`${msg.author} gave ${targets} a bellyrub!`, msg.author, `RANDOM`, `Bellyrub!`));
   },
