@@ -5,7 +5,7 @@ let client = null;
 
 module.exports = (search, msg, parent_client) => {
   client = parent_client;
-  let channel_whitelist = ['601680856817467393', '638747904969932840', '678743526254575617', '437808447745032205', '640605618553749534'];
+  let channel_whitelist = ['601680856817467393', '638747904969932840', '678743526254575617', '437808447745032205', '640605618553749534', '640637137502601216'];
   if(channel_whitelist.includes(msg.channel.id)) {
     let search_string = search.toString().replace(/,/g, ' ').concat(' -female -cub');
     // console.log(search_string.replace(/ /g, '+'));
