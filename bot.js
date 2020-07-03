@@ -2,12 +2,10 @@ require('dotenv').config()
 const { Client } = require('discord.js');
 const client = new Client();
 const router = require('./router');
-// const emote = require('./emote-only');
-// const lesbianBoost = require('./lesbian-boost');
 
 
 
-let prefix = "mfe!";
+let prefix = "a!";
 let current_env = "dev";
 let prod_token = process.env.PROD_TOKEN;
 let dev_token = process.env.DEV_TOKEN;
@@ -18,13 +16,19 @@ client.on('ready', () => {
 
 client.on('message', msg => {
   if(msg.content.substring(0, prefix.length).toLowerCase() == prefix && !msg.author.bot) {
-    let commandArray = msg.content.split(' ');
-    // console.log(commandArray[1].toLowerCase());
+    let commandString = msg.content.substring(prefix.length, msg.content.length);
+    if(commandString.charAt(0) == ' ') {
+      commandString = commandString.substring(1, commandString.length);
+    }
+    let commandArray = [prefix].concat(commandString.split(' '));
 
     if(commandArray.length >= 2) {
       router(commandArray, msg, client);
     }
 
+  }
+  else if(msg.content.substring(0, 4).toLowerCase() == 'mfe!' && !msg.author.bot) {
+    msg.channel.send("The new prefix is `a!`");
   }
 });
 

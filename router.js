@@ -12,6 +12,7 @@ const e621 = require('./commands/e621');
 const { seeCooldowns } = require('./commands/admin');
 const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy, fuck, pant, eatPant, suck, rub, tie, ride, facefuck, holdhands } = require('./commands/actions');
 const { stats } = require('./commands/stats');
+const bj = require('./commands/bj/app');
 
 const staffRoldID = '599972688932372482';
 const myID = '615687360138575893'
@@ -424,6 +425,14 @@ module.exports = (commandArray, msg, client) => {
       }
       else {
         cooldownNotice(msg, timeLeft);
+      }
+      break;
+    case 'bj':
+      if (commandArray.length <= 2) {
+        msg.channel.send(`Sorry, you must include a wager!`);
+      }
+      else {
+        // bj.startGame(msg.author.id, [1]);
       }
       break;
     default:
