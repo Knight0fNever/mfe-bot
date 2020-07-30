@@ -264,6 +264,38 @@ module.exports = {
     }
     targets = targets.trim();
     msg.channel.send(embedBuilder(`${msg.author} reaches over to ${targets}, brushing their hand with the back of their own. Slowly, they interlock fingers as they stare deeply into each other's eyes.`, msg.author, `RANDOM`, `Holds Hands!`, `https://cdn.discordapp.com/emojis/670335536136847360.gif?v=1`));
+  },
+  cum: (target, msg, client) => {
+    local_client = client;
+    let targets = "";
+    for (let i = 2; i < target.length; i++) {
+      targets = targets + target[i] + " ";
+    }
+    targets = targets.trim();
+    if (targets == "") {
+      let embed = embedBuilder(`${msg.author} grits their teeth and their body shivers with pleasure as they uncontrollably splurt all over the floor, leaving it a slimy mess.`, msg.author, `RANDOM`, `Cumshot`);
+      msg.channel.send(embed);
+    }
+    else {
+      let embed = embedBuilder(`${msg.author} grits their teeth and their body shivers as they uncontrollably splurt all over ${targets}; now marked with their seed.`, msg.author, `RANDOM`, `Cumshot`);
+      msg.channel.send(embed);
+    }
+  },
+  bonk: (target, msg, client) => {
+    local_client = client;
+    let targets = "";
+    for (let i = 2; i < target.length; i++) {
+      targets = targets + target[i] + " ";
+    }
+    targets = targets.trim();
+    if (targets == "") {
+      let embed = embedBuilder(`${msg.author} bonked themselves on the head. Ouch!`, msg.author, `RANDOM`, `Bonk!`, 'https://media1.tenor.com/images/d9b79552094d5036f686f194d006d8d4/tenor.gif');
+      msg.channel.send(embed);
+    }
+    else {
+      let embed = embedBuilder(`${msg.author} used a rubber hammer on ${targets}. B O N K`, msg.author, `RANDOM`, `Bonk!`, 'https://media1.tenor.com/images/d9b79552094d5036f686f194d006d8d4/tenor.gif');
+      msg.channel.send(embed);
+    }
   }
 }
 

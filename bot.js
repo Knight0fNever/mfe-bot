@@ -22,7 +22,7 @@ client.on('message', msg => {
     }
     let commandArray = [prefix].concat(commandString.split(' '));
 
-    if(commandArray.length >= 2) {
+    if(commandArray.length >= 2 && msg.channel.id != '628112458891919360') {
       router(commandArray, msg, client);
     }
 

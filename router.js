@@ -10,7 +10,7 @@ const avatar = require('./commands/avatar');
 const suggest = require('./commands/suggest');
 const e621 = require('./commands/e621');
 const { seeCooldowns } = require('./commands/admin');
-const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy, fuck, pant, eatPant, suck, rub, tie, ride, facefuck, holdhands } = require('./commands/actions');
+const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy, fuck, pant, eatPant, suck, rub, tie, ride, facefuck, holdhands, cum, bonk } = require('./commands/actions');
 const { stats } = require('./commands/stats');
 const bj = require('./commands/bj/app');
 
@@ -262,9 +262,9 @@ module.exports = (commandArray, msg, client) => {
         cooldownNotice(msg, timeLeft);
       }
       break;
-    case 'marry':
-      msg.channel.send(`That feature isn't available yet!`);
-      break;
+    // case 'marry':
+    //   msg.channel.send(`That feature isn't available yet!`);
+    //   break;
     case 'help':
       help(msg, commandArray[2]);
       break;
@@ -306,14 +306,14 @@ module.exports = (commandArray, msg, client) => {
         msg.channel.send(`Sorry, you can't eat pant.`);
       }
       break;
-    case 'ship':
-      if (commandArray.length <= 3) {
-        msg.channel.send(`Sorry, you must include 2 targets seperated by a space.`);
-      }
-      else {
-        ship(commandArray[2], commandArray[3], msg, client);
-      }
-      break;
+    // case 'ship':
+    //   if (commandArray.length <= 3) {
+    //     msg.channel.send(`Sorry, you must include 2 targets seperated by a space.`);
+    //   }
+    //   else {
+    //     ship(commandArray[2], commandArray[3], msg, client);
+    //   }
+    //   break;
     case 'e621':
       let search_array = commandArray.splice(2, commandArray.length - 2);
       console.log(search_array);
@@ -433,6 +433,24 @@ module.exports = (commandArray, msg, client) => {
       }
       else {
         // bj.startGame(msg.author.id, [1]);
+      }
+      break;
+    case 'cum':
+      if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
+        cum(commandArray, msg, client);
+        cooldown(JSON.stringify(cooldownObj), msg.author.id, 'cum');
+      }
+      else {
+        cooldownNotice(msg, timeLeft);
+      }
+      break;
+    case 'bonk':
+      if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
+        bonk(commandArray, msg, client);
+        cooldown(JSON.stringify(cooldownObj), msg.author.id, 'bonk');
+      }
+      else {
+        cooldownNotice(msg, timeLeft);
       }
       break;
     default:
