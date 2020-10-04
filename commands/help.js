@@ -28,11 +28,11 @@ module.exports = (msg, command) => {
         "value": "`a! e621 <search>`",
         "inline": true
       },
-      {
-        "name": "**suggest - sends a suggestion for the bot to the developer**",
-        "value": "`a! suggest <suggestion>`",
-        "inline": true
-      }
+      // {
+      //   "name": "**suggest - sends a suggestion for the bot to the developer**",
+      //   "value": "`a! suggest <suggestion>`",
+      //   "inline": true
+      // }
     ]
 
     let response = new MessageEmbed()

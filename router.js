@@ -9,10 +9,10 @@ const dadjoke = require('./commands/dadjoke');
 const avatar = require('./commands/avatar');
 const suggest = require('./commands/suggest');
 const e621 = require('./commands/e621');
-const { seeCooldowns } = require('./commands/admin');
+const { seeCooldowns, roles } = require('./commands/admin');
 const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy, fuck, pant, eatPant, suck, rub, tie, ride, facefuck, holdhands, cum, bonk } = require('./commands/actions');
 const { stats } = require('./commands/stats');
-const bj = require('./commands/bj/app');
+// const bj = require('./commands/bj/app');
 
 const staffRoldID = '599972688932372482';
 const myID = '615687360138575893'
@@ -341,9 +341,14 @@ module.exports = (commandArray, msg, client) => {
         seeCooldowns(msg, client, coolDowns, cooldownTime, startTime);
       }
       break;
-    case 'suggest':
-      suggest(commandArray, msg, client);
+    case 'roles':
+      if (msg.author.id == '615687360138575893' || msg.member.roles.cache.has(staffRoldID)) {
+        roles(msg, client);
+      }
       break;
+    // case 'suggest':
+    //   suggest(commandArray, msg, client);
+    //   break;
     case 'rub':
       if (commandArray.length <= 2) {
         msg.channel.send(`Sorry, you must include a target of your action!`);
@@ -427,14 +432,14 @@ module.exports = (commandArray, msg, client) => {
         cooldownNotice(msg, timeLeft);
       }
       break;
-    case 'bj':
-      if (commandArray.length <= 2) {
-        msg.channel.send(`Sorry, you must include a wager!`);
-      }
-      else {
-        // bj.startGame(msg.author.id, [1]);
-      }
-      break;
+    // case 'bj':
+    //   if (commandArray.length <= 2) {
+    //     msg.channel.send(`Sorry, you must include a wager!`);
+    //   }
+    //   else {
+    //     bj.startGame(msg.author.id, [1]);
+    //   }
+    //   break;
     case 'cum':
       if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
         cum(commandArray, msg, client);
