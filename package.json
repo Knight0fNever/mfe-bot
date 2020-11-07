@@ -16,6 +16,6 @@
     "merge-img": "^2.1.3",
     "moment": "^2.24.0",
     "mysql2": "^2.1.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": ">=2.6.1"
   }
 }
