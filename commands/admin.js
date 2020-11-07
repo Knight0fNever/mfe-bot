@@ -31,7 +31,7 @@ module.exports = {
     let i = 1;
     let embeds = [];
     msg.guild.roles.cache.sort((roleA, roleB) => roleB.position - roleA.position).each((role, key) => {
-      // console.log(`ID: ${role.id} Members: ${role.members.size} Position: ${role.position}`);
+      console.log(`ID: ${role.id} Members: ${role.members.size} Position: ${role.position}`);
 
       i++;
       let arrayNumber = Math.floor(i / 25);

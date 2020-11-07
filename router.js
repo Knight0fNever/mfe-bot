@@ -343,6 +343,7 @@ module.exports = (commandArray, msg, client) => {
       break;
     case 'roles':
       if (msg.author.id == '615687360138575893' || msg.member.roles.cache.has(staffRoldID)) {
+        msg.channel.send("Working...");
         roles(msg, client);
       }
       break;
