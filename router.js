@@ -6,6 +6,7 @@ const jumbo = require('./commands/jumbo');
 const profile = require('./commands/profile');
 const help = require('./commands/help');
 const dadjoke = require('./commands/dadjoke');
+const define = require('./commands/define');
 const avatar = require('./commands/avatar');
 const suggest = require('./commands/suggest');
 const e621 = require('./commands/e621');
@@ -458,6 +459,9 @@ module.exports = (commandArray, msg, client) => {
       else {
         cooldownNotice(msg, timeLeft);
       }
+      break;
+    case 'define':
+        define(commandArray, msg, client);
       break;
     default:
       console.log("no match");
