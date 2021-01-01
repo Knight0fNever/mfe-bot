@@ -29,7 +29,7 @@ module.exports = {
   checkForMeasure: (msg, client) => {
     let result = "";
     let weightRegEx = new RegExp(/([\d.]+)(\s+)?(lbs?|kgs?)/, 'gi');
-    let tempRegEx = new RegExp(/([\d.]+)(C|F)/, 'gi');
+    let tempRegEx = new RegExp(/((-?)[\d.]+)(C|F)/, 'gi');
 
     const weightMatchArray = weightRegEx.exec(msg.content);
     // console.log(weightMatchArray);
@@ -41,9 +41,9 @@ module.exports = {
       return result;
     }
     const tempMatchArray = tempRegEx.exec(msg.content);
-    // console.log(tempMatchArray);
+    console.log(tempMatchArray);
     if(tempMatchArray != null) {
-      let response = convertTemp(tempMatchArray[1], tempMatchArray[2]);
+      let response = convertTemp(tempMatchArray[1], tempMatchArray[3]);
       result = `${tempMatchArray[0]} is ${response[0]}${response[1]}`;
     }
     if(result != "") {
