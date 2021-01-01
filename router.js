@@ -5,6 +5,7 @@ const jumbo = require('./commands/jumbo');
 // const { checkForCooldown, marry } = require('./db/db');
 const profile = require('./commands/profile');
 const help = require('./commands/help');
+const helper = require('./helper');
 const dadjoke = require('./commands/dadjoke');
 const define = require('./commands/define');
 const avatar = require('./commands/avatar');
@@ -464,6 +465,7 @@ module.exports = (commandArray, msg, client) => {
         define(commandArray, msg, client);
       break;
     default:
+      helper.checkForMeasure(msg, client);
       console.log("no match");
   }
 }

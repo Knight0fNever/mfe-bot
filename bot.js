@@ -2,6 +2,7 @@ require('dotenv').config()
 const { Client } = require('discord.js');
 const client = new Client();
 const router = require('./router');
+const helper = require('./helper');
 
 
 
@@ -29,6 +30,13 @@ client.on('message', msg => {
   }
   else if(msg.content.substring(0, 4).toLowerCase() == 'mfe!' && !msg.author.bot) {
     msg.channel.send("The new prefix is `a!`");
+  }
+  else if(msg.author.bot == false) {
+    let conversion = helper.checkForMeasure(msg, client);
+    // console.log(conversion);
+    if(conversion != undefined) {
+      msg.channel.send(conversion);
+    }
   }
 });
 
