@@ -28,7 +28,7 @@ client.on('message', msg => {
     }
 
   }
-  else if(msg.content.substring(0, 4).toLowerCase() == 'mfe!' && !msg.author.bot) {
+  else if(msg.content.substring(0, 4).toLowerCase() == 'mfe!' && !msg.author.bot && msg.channel.id != '628112458891919360') {
     msg.channel.send("The new prefix is `a!`");
   }
   else if(msg.author.bot == false) {

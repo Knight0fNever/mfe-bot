@@ -29,9 +29,15 @@ module.exports = {
   checkForMeasure: (msg, client) => {
     let result = "";
     let response = "";
+    let urlRegex = new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)/, 'gm');
     let weightRegEx = new RegExp(/([\d.]+)(\s+)?(lbs?|kgs?)/, 'gi');
     // let tempRegEx = new RegExp(/((-?)[\d.]+)(C|F)/, 'gi');
     let tempRegEx = new RegExp(/((-?)([\d][.]?)+)(C|F)/, 'gi');
+
+    const urlMatchArray = urlRegex.exec(msg.content);
+    if(urlMatchArray != null) {
+      return;
+    }
 
     const weightMatchArray = weightRegEx.exec(msg.content);
     // console.log(weightMatchArray);
@@ -60,14 +66,18 @@ module.exports = {
   }
 }
 
+function convertHeight(value, measure) {
+  
+}
+
 
 function convertTemp(value, measure) {
   let result = [0, ""];
-  if (measure == 'C') {
+  if (measure.toUpperCase() == 'C') {
     result[0] = ((value * 1.8) + 32).toFixed(2);
     result[1] = 'F';
   }
-  else if (measure == 'F') {
+  else if (measure.toUpperCase() == 'F') {
     result[0] = ((value - 32) / 1.8).toFixed(2);
     result[1] = 'C';
   }
