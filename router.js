@@ -16,7 +16,7 @@ const { stats } = require('./commands/stats');
 // const bj = require('./commands/bj/app');
 
 const staffRoldID = '599972688932372482';
-const myID = '615687360138575893'
+const myID = '615687360138575893';
 
 const usedCommandRecently = new Set();
 const cooldownTime = 300000;
@@ -34,7 +34,7 @@ function cooldown(cooldownObj, id, action) {
         usedCommandRecently.delete(cooldownObj);
         delete coolDowns[cooldownObj];
       }, cooldownTime)
-    }
+    };
   }
 }
 
@@ -296,7 +296,7 @@ module.exports = (commandArray, msg, client) => {
       }
       break;
     case 'eatpant':
-      let authorizedUser = '250006896369598468'
+      let authorizedUser = '250006896369598468';
       if (commandArray.length <= 2 && msg.author.id == authorizedUser) {
         msg.channel.send(`Sorry, you must include a target of your action!`);
       }
@@ -318,7 +318,12 @@ module.exports = (commandArray, msg, client) => {
     case 'e621':
       let search_array = commandArray.splice(2, commandArray.length - 2);
       console.log(search_array);
-      e621(search_array, msg, client);
+      let search_string = search_array.toString().replace(/,/g, ' ').concat(' order:score');
+      e621(search_string, msg, client);
+      break;
+    case 'yiff':
+      let yiff_search_string = " male -diaper -vore order:random";
+      e621(yiff_search_string, msg, client);
       break;
     case 'suck':
       if (commandArray.length <= 2) {
@@ -461,9 +466,9 @@ module.exports = (commandArray, msg, client) => {
       }
       break;
     case 'define':
-        define(commandArray, msg, client);
+      define(commandArray, msg, client);
       break;
     default:
       console.log("no match");
   }
-}
+};
