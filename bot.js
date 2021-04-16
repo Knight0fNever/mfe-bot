@@ -1,9 +1,8 @@
-require('dotenv').config()
+require('dotenv').config();
 const { Client } = require('discord.js');
 const client = new Client();
 const router = require('./router');
 const helper = require('./helper');
-
 
 
 let prefix = "a!";
@@ -16,25 +15,25 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-  if(msg.content.substring(0, prefix.length).toLowerCase() == prefix && !msg.author.bot) {
+  if (msg.content.substring(0, prefix.length).toLowerCase() == prefix && !msg.author.bot) {
     let commandString = msg.content.substring(prefix.length, msg.content.length);
-    if(commandString.charAt(0) == ' ') {
+    if (commandString.charAt(0) == ' ') {
       commandString = commandString.substring(1, commandString.length);
     }
     let commandArray = [prefix].concat(commandString.split(' '));
 
-    if(commandArray.length >= 2 && msg.channel.id != '628112458891919360') {
+    if (commandArray.length >= 2 && msg.channel.id != '628112458891919360') {
       router(commandArray, msg, client);
     }
 
   }
-  else if(msg.content.substring(0, 4).toLowerCase() == 'mfe!' && !msg.author.bot && msg.channel.id != '628112458891919360') {
+  else if (msg.content.substring(0, 4).toLowerCase() == 'mfe!' && !msg.author.bot && msg.channel.id != '628112458891919360') {
     msg.channel.send("The new prefix is `a!`");
   }
-  else if(msg.author.bot == false) {
+  else if (msg.author.bot == false) {
     let conversion = helper.checkForMeasure(msg, client);
     // console.log(conversion);
-    if(conversion != undefined) {
+    if (conversion != undefined) {
       msg.channel.send(conversion);
     }
   }
@@ -45,7 +44,7 @@ client.on('error', error => {
   console.error('The websocket connection encountered an error:', error);
 });
 
-if(current_env == 'dev') {
+if (current_env == 'dev') {
   client.login(dev_token);
 }
 else {
