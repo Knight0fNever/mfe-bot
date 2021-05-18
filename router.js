@@ -287,24 +287,36 @@ module.exports = (commandArray, msg, client) => {
       }
       break;
     case 'pant':
-      if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
-        pant(commandArray[2], msg, client);
-        cooldown(JSON.stringify(cooldownObj), msg.author.id, 'pant');
+      let allowedGuild = '598834691625451522';
+      if (msg.guild.id == allowedGuild) {
+        if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
+          pant(commandArray[2], msg, client);
+          cooldown(JSON.stringify(cooldownObj), msg.author.id, 'pant');
+        }
+        else {
+          cooldownNotice(msg, timeLeft);
+        }
       }
       else {
-        cooldownNotice(msg, timeLeft);
+        msg.channel.send("Sorry that command is not available in this server!");
       }
       break;
     case 'eatpant':
+      let allowedGuild_EatPant = '598834691625451522';
       let authorizedUser = '250006896369598468';
-      if (commandArray.length <= 2 && msg.author.id == authorizedUser) {
-        msg.channel.send(`Sorry, you must include a target of your action!`);
-      }
-      else if (msg.author.id == authorizedUser) {
-        eatPant(commandArray, msg, client);
+      if (allowedGuild_EatPant == msg.guild.id) {
+        if (commandArray.length <= 2 && msg.author.id == authorizedUser) {
+          msg.channel.send(`Sorry, you must include a target of your action!`);
+        }
+        else if (msg.author.id == authorizedUser) {
+          eatPant(commandArray, msg, client);
+        }
+        else {
+          msg.channel.send(`Sorry, you can't eat pant.`);
+        }
       }
       else {
-        msg.channel.send(`Sorry, you can't eat pant.`);
+        msg.channel.send("Sorry that command is not available in this server!");
       }
       break;
     // case 'ship':
