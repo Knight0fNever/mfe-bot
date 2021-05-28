@@ -6,7 +6,7 @@ let client = null;
 module.exports = (search, msg, parent_client) => {
   client = parent_client;
   let channel_whitelist = ['601680856817467393', '638747904969932840', '678743526254575617', '437808447745032205', '640605618553749534', '640637137502601216'];
-  let searcg_string = search.concat(' -female -cub -young -teen -feral -shota -futa -scat -gore -webm -flash -baby_pok%C3%A9mon -not_furry -digimon_%28species%29');
+  let searcg_string = search.concat(' -female -cub -young -teen -feral -shota -futa -scat -gore -blood -webm -flash -baby_pok%C3%A9mon -not_furry -digimon_%28species%29');
   if (channel_whitelist.includes(msg.channel.id)) {
     // console.log(search_string.replace(/ /g, '+'));
     let url = `https://e621.net/posts.json?tags=${searcg_string.replace(/ /g, '+')}&limit=320`;
