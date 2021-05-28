@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "apollo",
+    "password": "gcyEur%8G8sDpupH",
+    "database": "apollo_dev",
+    "host": "149.28.210.241",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "apollo",
+    "password": "gcyEur%8G8sDpupH",
+    "database": "apollo_test",
+    "host": "149.28.210.241",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "apollo",
+    "password": "gcyEur%8G8sDpupH",
+    "database": "apollo",
+    "host": "149.28.210.241",
+    "dialect": "mysql"
+  }
+}
