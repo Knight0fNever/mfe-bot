@@ -309,7 +309,7 @@ module.exports = {
         msg.channel.send("<:judging:633193950299291658>");
       }
       else {
-        msg.channel.send(embedBuilder(`Unbearably close to an intense climax, ${msg.author} pops his knot into ${targets}. The walls of ${msg.author}'s insides clamp tightly in response to the sudden entry of the large, swollen member, which is enough to push ${msg.author} over the edge. ${msg.author} shoots enough thick, warm cum to coat ${targets}'s guts.`, msg.author, `RANDOM`, `Knot!`));
+        msg.channel.send(embedBuilder(`Unbearably close to an intense climax, ${msg.author} pops his knot into ${targets}. The walls of ${targets}'s insides clamp tightly in response to the sudden entry of the large, swollen member, which is enough to push ${msg.author} over the edge. ${msg.author} shoots enough thick, warm cum to coat ${targets}'s guts.`, msg.author, `RANDOM`, `Knot!`));
       }
     }
   }
