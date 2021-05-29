@@ -33,7 +33,7 @@ module.exports = (msg, command) => {
       //   "value": "`a! suggest <suggestion>`",
       //   "inline": true
       // }
-    ]
+    ];
 
     let response = new MessageEmbed()
       .setTitle("Apollo Help Page")
@@ -48,9 +48,9 @@ module.exports = (msg, command) => {
       .setTitle("Apollo Actions")
       .setColor("RANDOM")
       .setAuthor(msg.author.tag, msg.author.avatarURL())
-      .setDescription("bellyrub\n boop\n cuddle\n flop\n hug\n kiss\n lick\n nap\n nuzzle\n pat\n poke\n pounce\n slap\n sniff\n spray\n wag\n whosagoodboy\n fuck\n pant\n eatPant\n suck\n rub\n tie\n ride\n facefuck\n holdhands\n cum\n bonk")
+      .setDescription("bellyrub\n boop\n cuddle\n flop\n hug\n kiss\n lick\n nap\n nuzzle\n pat\n poke\n pounce\n slap\n sniff\n spray\n wag\n whosagoodboy\n fuck\n pant\n eatPant\n suck\n rub\n tie\n ride\n facefuck\n holdhands\n cum\n bonk\n knot");
 
     msg.channel.send(response);
   }
 
-}
+};

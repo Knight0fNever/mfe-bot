@@ -11,7 +11,7 @@ const avatar = require('./commands/avatar');
 const suggest = require('./commands/suggest');
 const e621 = require('./commands/e621');
 const { seeCooldowns, roles } = require('./commands/admin');
-const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy, fuck, pant, eatPant, suck, rub, tie, ride, facefuck, holdhands, cum, bonk } = require('./commands/actions');
+const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy, fuck, pant, eatPant, suck, rub, tie, ride, facefuck, holdhands, cum, bonk, knot } = require('./commands/actions');
 const { stats } = require('./commands/stats');
 // const bj = require('./commands/bj/app');
 
@@ -479,6 +479,23 @@ module.exports = (commandArray, msg, client) => {
       break;
     case 'define':
       define(commandArray, msg, client);
+      break;
+    case 'knot':
+      if (commandArray.length <= 2) {
+        msg.channel.send(`Sorry, you must include a target of your action!`);
+      }
+      else if (msg.channel.id != '598847956996718628') {
+        if (!usedCommandRecently.has(JSON.stringify(cooldownObj))) {
+          knot(commandArray, msg, client);
+          cooldown(JSON.stringify(cooldownObj), msg.author.id, 'knot');
+        }
+        else {
+          cooldownNotice(msg, timeLeft);
+        }
+      }
+      else {
+        msg.channel.send(`This can't be done in the SFW-Chat!`);
+      }
       break;
     default:
       console.log("no match");

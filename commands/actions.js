@@ -189,11 +189,11 @@ module.exports = {
     local_client = client;
     const user = msg.mentions.users.first();
     if (user == undefined) {
-      let embed = embedBuilder(`${msg.author} removes their pant and then donates them to <@!250006896369598468>, the pant eater!`, msg.author, `RANDOM`, `Pant!`)
+      let embed = embedBuilder(`${msg.author} removes their pant and then donates them to <@!250006896369598468>, the pant eater!`, msg.author, `RANDOM`, `Pant!`);
       msg.channel.send(embed);
     }
     else {
-      let embed = embedBuilder(`${msg.author} removes their pant and then gives them to <@${user.id}>!`, msg.author, `RANDOM`, `Pant!`)
+      let embed = embedBuilder(`${msg.author} removes their pant and then gives them to <@${user.id}>!`, msg.author, `RANDOM`, `Pant!`);
       msg.channel.send(embed);
     }
   },
@@ -296,6 +296,22 @@ module.exports = {
       let embed = embedBuilder(`${msg.author} used a rubber hammer on ${targets}. B O N K`, msg.author, `RANDOM`, `Bonk!`, 'https://media1.tenor.com/images/d9b79552094d5036f686f194d006d8d4/tenor.gif');
       msg.channel.send(embed);
     }
+  },
+  knot: (target, msg, client) => {
+    local_client = client;
+    let targets = "";
+    for (let i = 2; i < target.length; i++) {
+      targets = targets + target[i] + " ";
+    }
+    targets = targets.trim();
+    if (msg.mentions.users.first() != undefined) {
+      if (msg.author.id == msg.mentions.users.first().id) {
+        msg.channel.send("<:judging:633193950299291658>");
+      }
+      else {
+        msg.channel.send(embedBuilder(`Unbearably close to an intense climax, ${msg.author} pops his knot into ${targets}. The walls of ${msg.author}'s insides clamp tightly in response to the sudden entry of the large, swollen member, which is enough to push ${msg.author} over the edge. ${msg.author} shoots enough thick, warm cum to coat ${targets}'s guts.`, msg.author, `RANDOM`, `Knot!`));
+      }
+    }
   }
-}
+};
 
