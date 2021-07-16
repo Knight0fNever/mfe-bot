@@ -11,7 +11,7 @@ const avatar = require('./commands/avatar');
 const suggest = require('./commands/suggest');
 const e621 = require('./commands/e621');
 const { seeCooldowns, roles } = require('./commands/admin');
-const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy, fuck, pant, eatPant, suck, rub, tie, ride, facefuck, holdhands, cum, bonk, knot } = require('./commands/actions');
+const { bellyrub, boop, cuddle, flop, hug, kiss, lick, nap, nuzzle, pat, poke, pounce, slap, sniff, spray, wag, whosagoodboy, fuck, pant, eatPant, suck, rub, tie, ride, facefuck, holdhands, cum, bonk, knot, eatKneecaps } = require('./commands/actions');
 const { stats } = require('./commands/stats');
 // const bj = require('./commands/bj/app');
 
@@ -319,14 +319,6 @@ module.exports = (commandArray, msg, client) => {
         msg.channel.send("Sorry that command is not available in this server!");
       }
       break;
-    // case 'ship':
-    //   if (commandArray.length <= 3) {
-    //     msg.channel.send(`Sorry, you must include 2 targets seperated by a space.`);
-    //   }
-    //   else {
-    //     ship(commandArray[2], commandArray[3], msg, client);
-    //   }
-    //   break;
     case 'e621':
       let search_array = commandArray.splice(2, commandArray.length - 2);
       console.log(search_array);
@@ -495,6 +487,24 @@ module.exports = (commandArray, msg, client) => {
       }
       else {
         msg.channel.send(`This can't be done in the SFW-Chat!`);
+      }
+      break;
+    case 'eatkneecaps':
+      let allowedGuild_EatKneecaps = '598834691625451522';
+      let authorizedUserKneecaps = '705252895905284161';
+      if (allowedGuild_EatKneecaps == msg.guild.id) {
+        if (commandArray.length <= 2 && msg.author.id == authorizedUserKneecaps) {
+          msg.channel.send(`Sorry, you must include a target of your action!`);
+        }
+        else if (msg.author.id == authorizedUserKneecaps) {
+          eatKneecaps(commandArray, msg, client);
+        }
+        else {
+          msg.channel.send(`Sorry, you can't eat pant.`);
+        }
+      }
+      else {
+        msg.channel.send("Sorry that command is not available in this server!");
       }
       break;
     default:

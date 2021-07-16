@@ -312,6 +312,15 @@ module.exports = {
         msg.channel.send(embedBuilder(`Unbearably close to an intense climax, ${msg.author} pops his knot into ${targets}. The walls of ${targets}'s insides clamp tightly in response to the sudden entry of the large, swollen member, which is enough to push ${msg.author} over the edge. ${msg.author} shoots enough thick, warm cum to coat ${targets}'s guts.`, msg.author, `RANDOM`, `Knot!`));
       }
     }
+  },
+  eatKneecaps: (target, msg, client) => {
+    local_client = client;
+    let targets = "";
+    for (let i = 2; i < target.length; i++) {
+      targets = targets + target[i] + " ";
+    }
+    targets = targets.trim();
+    msg.channel.send(embedBuilder(`${msg.author} sinks his claws into ${targets}'s knees. Gouging out their kneecaps and tearing apart the ligaments as he rips the kneecaps off its socket`, msg.author, `RANDOM`, `Kneecap Vore!`, `https://media1.tenor.com/images/17d0bd720086dbdc1f9e5d9bc52784a5/tenor.gif?itemid=12205637`));
   }
 };
 
